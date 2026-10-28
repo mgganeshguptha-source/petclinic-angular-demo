@@ -23,7 +23,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {OwnersModule} from './owners/owners.module';
@@ -37,28 +37,22 @@ import {HttpErrorHandler} from './error.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    OwnersModule,
-    PetsModule,
-    VisitsModule,
-    PetTypesModule,
-    VetsModule,
-    SpecialtiesModule,
-    PartsModule,
-    BrowserAnimationsModule,
-    AppRoutingModule
-  ],
-  providers: [
-    HttpErrorHandler,
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        OwnersModule,
+        PetsModule,
+        VisitsModule,
+        PetTypesModule,
+        VetsModule,
+        SpecialtiesModule,
+        PartsModule,
+        BrowserAnimationsModule,
+        AppRoutingModule], providers: [
+        HttpErrorHandler,
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {
 }

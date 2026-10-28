@@ -26,7 +26,7 @@ import {Observable} from 'rxjs';
 import {Specialty} from './specialty';
 import {catchError} from 'rxjs/operators';
 import {HandleError, HttpErrorHandler} from '../error.service';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SpecialtyService {

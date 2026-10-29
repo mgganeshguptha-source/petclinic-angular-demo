@@ -31,7 +31,7 @@ import {PetsModule} from './pets/pets.module';
 import {VisitsModule} from './visits/visits.module';
 import {PetTypesModule} from './pettypes/pettypes.module';
 import {VetsModule} from './vets/vets.module';
-import {PartsModule} from './parts/parts.module';
+
 import {SpecialtiesModule} from './specialties/specialties.module';
 import {HttpErrorHandler} from './error.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -41,16 +41,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         AppComponent,
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
-        FormsModule,
-        OwnersModule,
-        PetsModule,
-        VisitsModule,
-        PetTypesModule,
-        VetsModule,
-        SpecialtiesModule,
-        PartsModule,
-        BrowserAnimationsModule,
-        AppRoutingModule], providers: [
+    FormsModule,
+    OwnersModule,
+    PetsModule,
+    VisitsModule,
+    PetTypesModule,
+    VetsModule,
+    SpecialtiesModule,
+    BrowserAnimationsModule,
+    AppRoutingModule], providers: [
         HttpErrorHandler,
         provideHttpClient(withInterceptorsFromDi()),
     ] })

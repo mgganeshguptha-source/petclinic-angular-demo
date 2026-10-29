@@ -29,9 +29,10 @@ import {Specialty} from '../../specialties/specialty';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-vet-edit',
-  templateUrl: './vet-edit.component.html',
-  styleUrls: ['./vet-edit.component.css']
+    selector: 'app-vet-edit',
+    templateUrl: './vet-edit.component.html',
+    styleUrls: ['./vet-edit.component.css'],
+    standalone: false
 })
 export class VetEditComponent implements OnInit {
   vetEditForm: FormGroup;

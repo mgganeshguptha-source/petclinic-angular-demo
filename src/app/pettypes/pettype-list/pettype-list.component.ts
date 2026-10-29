@@ -6,9 +6,10 @@ import {Specialty} from '../../specialties/specialty';
 import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-pettype-list',
-  templateUrl: './pettype-list.component.html',
-  styleUrls: ['./pettype-list.component.css']
+    selector: 'app-pettype-list',
+    templateUrl: './pettype-list.component.html',
+    styleUrls: ['./pettype-list.component.css'],
+    standalone: false
 })
 export class PettypeListComponent implements OnInit {
   pettypes: PetType[];

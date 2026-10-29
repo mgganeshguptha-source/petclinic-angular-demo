@@ -26,9 +26,10 @@ import { Owner } from '../owner';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-owner-edit',
-  templateUrl: './owner-edit.component.html',
-  styleUrls: ['./owner-edit.component.css'],
+    selector: 'app-owner-edit',
+    templateUrl: './owner-edit.component.html',
+    styleUrls: ['./owner-edit.component.css'],
+    standalone: false
 })
 export class OwnerEditComponent implements OnInit {
   owner: Owner;

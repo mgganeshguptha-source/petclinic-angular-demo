@@ -26,9 +26,10 @@ import {VisitService} from '../visit.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-visit-list',
-  templateUrl: './visit-list.component.html',
-  styleUrls: ['./visit-list.component.css']
+    selector: 'app-visit-list',
+    templateUrl: './visit-list.component.html',
+    styleUrls: ['./visit-list.component.css'],
+    standalone: false
 })
 export class VisitListComponent implements OnInit {
 

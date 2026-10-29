@@ -26,9 +26,10 @@ import {SpecialtyService} from '../specialty.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-specialty-edit',
-  templateUrl: './specialty-edit.component.html',
-  styleUrls: ['./specialty-edit.component.css']
+    selector: 'app-specialty-edit',
+    templateUrl: './specialty-edit.component.html',
+    styleUrls: ['./specialty-edit.component.css'],
+    standalone: false
 })
 export class SpecialtyEditComponent implements OnInit {
   specialty: Specialty;

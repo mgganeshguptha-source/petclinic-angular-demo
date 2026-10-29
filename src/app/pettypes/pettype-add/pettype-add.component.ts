@@ -3,9 +3,10 @@ import {PetType} from '../pettype';
 import {PetTypeService} from '../pettype.service';
 
 @Component({
-  selector: 'app-pettype-add',
-  templateUrl: './pettype-add.component.html',
-  styleUrls: ['./pettype-add.component.css']
+    selector: 'app-pettype-add',
+    templateUrl: './pettype-add.component.html',
+    styleUrls: ['./pettype-add.component.css'],
+    standalone: false
 })
 export class PettypeAddComponent implements OnInit {
   pettype: PetType;

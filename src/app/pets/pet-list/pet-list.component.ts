@@ -27,9 +27,10 @@ import {PetService} from '../pet.service';
 import {Pet} from '../pet';
 
 @Component({
-  selector: 'app-pet-list',
-  templateUrl: './pet-list.component.html',
-  styleUrls: ['./pet-list.component.css']
+    selector: 'app-pet-list',
+    templateUrl: './pet-list.component.html',
+    styleUrls: ['./pet-list.component.css'],
+    standalone: false
 })
 export class PetListComponent implements OnInit {
   errorMessage: string;

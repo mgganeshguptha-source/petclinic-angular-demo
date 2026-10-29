@@ -27,9 +27,10 @@ import {Router} from '@angular/router';
 import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-specialty-list',
-  templateUrl: './specialty-list.component.html',
-  styleUrls: ['./specialty-list.component.css']
+    selector: 'app-specialty-list',
+    templateUrl: './specialty-list.component.html',
+    styleUrls: ['./specialty-list.component.css'],
+    standalone: false
 })
 export class SpecialtyListComponent implements OnInit {
   specialties: Specialty[];

@@ -26,9 +26,10 @@ import {PetTypeService} from '../pettype.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-pettype-edit',
-  templateUrl: './pettype-edit.component.html',
-  styleUrls: ['./pettype-edit.component.css']
+    selector: 'app-pettype-edit',
+    templateUrl: './pettype-edit.component.html',
+    styleUrls: ['./pettype-edit.component.css'],
+    standalone: false
 })
 export class PettypeEditComponent implements OnInit {
   pettype: PetType;

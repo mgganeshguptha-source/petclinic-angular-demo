@@ -54,15 +54,14 @@ describe('SpecialtyListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SpecialtyListComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule],
-      providers: [
-        {provide: SpecialtyService, useClass: SpecialityServiceStub},
-        {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-      ]
-    })
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, SpecialtyListComponent],
+    providers: [
+        { provide: SpecialtyService, useClass: SpecialityServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
+    ]
+})
       .compileComponents();
   }));
 

@@ -32,20 +32,17 @@ import {OwnersRoutingModule} from './owners-routing.module';
 import {PetsModule} from '../pets/pets.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    OwnersRoutingModule,
-    PetsModule
-  ],
-  declarations: [
-    OwnerListComponent,
-    OwnerDetailComponent,
-    OwnerEditComponent,
-    OwnerAddComponent
-  ],
-  providers: [OwnerService]
-
+    imports: [
+        CommonModule,
+        FormsModule,
+        OwnersRoutingModule,
+        PetsModule,
+        OwnerListComponent,
+        OwnerDetailComponent,
+        OwnerEditComponent,
+        OwnerAddComponent
+    ],
+    providers: [OwnerService]
 })
 
 export class OwnersModule {

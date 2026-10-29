@@ -19,13 +19,33 @@
 // import './polyfills.ts';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { environment } from './environments/environment';
-import { AppModule } from './app/app.module';
+
+import { HttpErrorHandler } from './app/error.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { OwnersModule } from './app/owners/owners.module';
+import { PetsModule } from './app/pets/pets.module';
+import { VisitsModule } from './app/visits/visits.module';
+import { PetTypesModule } from './app/pettypes/pettypes.module';
+import { VetsModule } from './app/vets/vets.module';
+import { SpecialtiesModule } from './app/specialties/specialties.module';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app/app-routing.module';
+import { AppComponent } from './app/app.component';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+    providers: [
+        importProvidersFrom(BrowserModule, FormsModule, OwnersModule, PetsModule, VisitsModule, PetTypesModule, VetsModule, SpecialtiesModule, AppRoutingModule),
+        HttpErrorHandler,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideAnimations()
+    ]
+})
   .catch(err => console.log(err));

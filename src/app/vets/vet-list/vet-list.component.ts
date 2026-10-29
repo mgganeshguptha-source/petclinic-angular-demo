@@ -25,11 +25,13 @@ import {Vet} from '../vet';
 import {VetService} from '../vet.service';
 import {Router} from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-vet-list',
-  templateUrl: './vet-list.component.html',
-  styleUrls: ['./vet-list.component.css']
+    selector: 'app-vet-list',
+    templateUrl: './vet-list.component.html',
+    styleUrls: ['./vet-list.component.css'],
+    imports: [NgFor, NgIf]
 })
 export class VetListComponent implements OnInit {
   vets: Vet[];

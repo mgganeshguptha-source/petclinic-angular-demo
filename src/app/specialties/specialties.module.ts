@@ -31,20 +31,18 @@ import {SpecialtyEditComponent} from './specialty-edit/specialty-edit.component'
 import {SpecResolver} from './spec-resolver';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SpecialtiesRoutingModule
-  ],
-  declarations: [
-    SpecialtyListComponent,
-    SpecialtyAddComponent,
-    SpecialtyEditComponent
-  ],
-  exports: [
-    SpecialtyListComponent
-  ],
-  providers: [SpecialtyService, SpecResolver]
+    imports: [
+        CommonModule,
+        FormsModule,
+        SpecialtiesRoutingModule,
+        SpecialtyListComponent,
+        SpecialtyAddComponent,
+        SpecialtyEditComponent
+    ],
+    exports: [
+        SpecialtyListComponent
+    ],
+    providers: [SpecialtyService, SpecResolver]
 })
 export class SpecialtiesModule {
 }

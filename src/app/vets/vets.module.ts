@@ -32,24 +32,22 @@ import {VetAddComponent} from './vet-add/vet-add.component';
 import {VetResolver} from './vet-resolver';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    VetsRoutingModule
-  ],
-  declarations: [
-    VetListComponent,
-    VetEditComponent,
-    VetAddComponent
-  ],
-  exports: [
-    VetListComponent,
-    VetEditComponent,
-    VetAddComponent
-  ],
-  providers: [VetService, VetResolver]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        VetsRoutingModule,
+        VetListComponent,
+        VetEditComponent,
+        VetAddComponent
+    ],
+    exports: [
+        VetListComponent,
+        VetEditComponent,
+        VetAddComponent
+    ],
+    providers: [VetService, VetResolver]
 })
 export class VetsModule {
 }

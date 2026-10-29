@@ -51,29 +51,27 @@ describe('OwnerDetailComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [OwnerDetailComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
-        providers: [
-          { provide: OwnerService, useClass: OwnerServiceStub },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, RouterTestingModule, OwnerDetailComponent],
+    providers: [
+        { provide: OwnerService, useClass: OwnerServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+    ],
+}).compileComponents();
     })
   );
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [OwnerDetailComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
-        providers: [
-          { provide: OwnerService, useValue: ownerService },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, RouterTestingModule, OwnerDetailComponent],
+    providers: [
+        { provide: OwnerService, useValue: ownerService },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+    ],
+}).compileComponents();
     })
   );
 

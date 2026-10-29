@@ -73,20 +73,19 @@ describe('OwnerListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [DummyComponent],
-      schemas: [NO_ERRORS_SCHEMA],
-      imports: [CommonModule, FormsModule, PartsModule, OwnersModule,
-        RouterTestingModule.withRoutes(
-          [{path: 'owners', component: OwnerListComponent},
-            {path: 'owners/add', component: OwnerAddComponent},
-            {path: 'owners/:id', component: OwnerDetailComponent},
-            {path: 'owners/:id/edit', component: OwnerEditComponent}
-          ])],
-      providers: [
-        {provide: OwnerService, useValue: ownerService},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-      ]
-    })
+    declarations: [DummyComponent],
+    schemas: [NO_ERRORS_SCHEMA],
+    imports: [CommonModule, FormsModule, PartsModule, OwnersModule,
+        RouterTestingModule.withRoutes([{ path: 'owners', component: OwnerListComponent },
+            { path: 'owners/add', component: OwnerAddComponent },
+            { path: 'owners/:id', component: OwnerDetailComponent },
+            { path: 'owners/:id/edit', component: OwnerEditComponent }
+        ])],
+    providers: [
+        { provide: OwnerService, useValue: ownerService },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
+    ]
+})
       .compileComponents();
   }));
 

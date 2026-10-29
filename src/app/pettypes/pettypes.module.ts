@@ -30,19 +30,18 @@ import {PettypeEditComponent} from './pettype-edit/pettype-edit.component';
 import {PettypesRoutingModule} from './pettypes-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    PettypesRoutingModule
-  ],
-  declarations: [
-    PettypeListComponent,
-    PettypeAddComponent,
-    PettypeEditComponent],
-  exports: [
-    PettypeListComponent
-  ],
-  providers: [PetTypeService]
+    imports: [
+        CommonModule,
+        FormsModule,
+        PettypesRoutingModule,
+        PettypeListComponent,
+        PettypeAddComponent,
+        PettypeEditComponent
+    ],
+    exports: [
+        PettypeListComponent
+    ],
+    providers: [PetTypeService]
 })
 export class PetTypesModule {
 }

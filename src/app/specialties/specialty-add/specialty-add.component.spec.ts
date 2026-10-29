@@ -26,29 +26,27 @@ describe('SpecialtyAddComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [SpecialtyAddComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule],
-        providers: [
-          { provide: SpecialtyService, useClass: SpecialityServiceStub },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, SpecialtyAddComponent],
+    providers: [
+        { provide: SpecialtyService, useClass: SpecialityServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+    ],
+}).compileComponents();
     })
   );
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [SpecialtyAddComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule],
-        providers: [
-          { provide: SpecialtyService, useClass: SpecialityServiceStub },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, SpecialtyAddComponent],
+    providers: [
+        { provide: SpecialtyService, useClass: SpecialityServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+    ],
+}).compileComponents();
     })
   );
 

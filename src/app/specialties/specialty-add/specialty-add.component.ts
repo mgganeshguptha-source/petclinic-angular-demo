@@ -23,14 +23,16 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule } from '@angular/forms';
 import { Specialty } from '../specialty';
 import { SpecialtyService } from '../specialty.service';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-specialty-add',
-  templateUrl: './specialty-add.component.html',
-  styleUrls: ['./specialty-add.component.css'],
+    selector: 'app-specialty-add',
+    templateUrl: './specialty-add.component.html',
+    styleUrls: ['./specialty-add.component.css'],
+    imports: [FormsModule, NgIf]
 })
 export class SpecialtyAddComponent implements OnInit {
   @ViewChild('specialityForm', { static: true }) specialityForm: NgForm;

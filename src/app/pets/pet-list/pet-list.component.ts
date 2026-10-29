@@ -25,11 +25,14 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PetService} from '../pet.service';
 import {Pet} from '../pet';
+import { NgIf } from '@angular/common';
+import { VisitListComponent } from '../../visits/visit-list/visit-list.component';
 
 @Component({
-  selector: 'app-pet-list',
-  templateUrl: './pet-list.component.html',
-  styleUrls: ['./pet-list.component.css']
+    selector: 'app-pet-list',
+    templateUrl: './pet-list.component.html',
+    styleUrls: ['./pet-list.component.css'],
+    imports: [NgIf, VisitListComponent]
 })
 export class PetListComponent implements OnInit {
   errorMessage: string;

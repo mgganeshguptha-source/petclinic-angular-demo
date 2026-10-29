@@ -67,17 +67,16 @@ describe('PetEditComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PetEditComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule, MatDatepickerModule, MatMomentDateModule],
-      providers: [
-        {provide: PetService, useClass: PetServiceStub},
-        {provide: OwnerService, useClass: OwnerServiceStub},
-        {provide: PetTypeService, useClass: PetTypeServiceStub},
-        {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-      ]
-    })
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, MatDatepickerModule, MatMomentDateModule, PetEditComponent],
+    providers: [
+        { provide: PetService, useClass: PetServiceStub },
+        { provide: OwnerService, useClass: OwnerServiceStub },
+        { provide: PetTypeService, useClass: PetTypeServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
+    ]
+})
       .compileComponents();
   }));
 

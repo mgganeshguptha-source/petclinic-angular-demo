@@ -34,10 +34,9 @@ describe('VetAddComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [VetAddComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
-    })
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, VetAddComponent]
+})
       .compileComponents();
   }));
 

@@ -23,7 +23,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  template: ''
+    template: '',
+    standalone: false
 })
 export class DummyComponent {
 

@@ -31,11 +31,15 @@ import {PetService} from '../pet.service';
 import {OwnerService} from '../../owners/owner.service';
 
 import * as moment from 'moment';
+import { FormsModule } from '@angular/forms';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
-  selector: 'app-pet-add',
-  templateUrl: './pet-add.component.html',
-  styleUrls: ['./pet-add.component.css']
+    selector: 'app-pet-add',
+    templateUrl: './pet-add.component.html',
+    styleUrls: ['./pet-add.component.css'],
+    imports: [FormsModule, NgIf, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, NgFor, DatePipe]
 })
 export class PetAddComponent implements OnInit {
   pet: Pet;

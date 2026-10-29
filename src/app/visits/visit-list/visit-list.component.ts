@@ -24,11 +24,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Visit} from '../visit';
 import {VisitService} from '../visit.service';
 import {Router} from '@angular/router';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-visit-list',
-  templateUrl: './visit-list.component.html',
-  styleUrls: ['./visit-list.component.css']
+    selector: 'app-visit-list',
+    templateUrl: './visit-list.component.html',
+    styleUrls: ['./visit-list.component.css'],
+    imports: [NgFor]
 })
 export class VisitListComponent implements OnInit {
 

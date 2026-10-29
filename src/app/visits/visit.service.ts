@@ -25,7 +25,7 @@ import {Observable} from 'rxjs';
 import {Visit} from './visit';
 import {environment} from '../../environments/environment';
 import {HandleError, HttpErrorHandler} from '../error.service';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 
 @Injectable()

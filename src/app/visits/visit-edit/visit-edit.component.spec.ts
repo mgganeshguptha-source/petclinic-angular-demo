@@ -64,17 +64,16 @@ describe('VisitEditComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [VisitEditComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule, MatDatepickerModule, MatMomentDateModule],
-      providers: [
-        {provide: VisitService, useClass: VisitServiceStub},
-        {provide: OwnerService, useClass: OwnerServiceStub},
-        {provide: PetService, useClass: PetServiceStub},
-        {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-      ]
-    })
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, MatDatepickerModule, MatMomentDateModule, VisitEditComponent],
+    providers: [
+        { provide: VisitService, useClass: VisitServiceStub },
+        { provide: OwnerService, useClass: OwnerServiceStub },
+        { provide: PetService, useClass: PetServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
+    ]
+})
       .compileComponents();
   }));
 

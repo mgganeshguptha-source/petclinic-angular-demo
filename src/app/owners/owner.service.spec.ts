@@ -22,17 +22,10 @@
  * @author Vitaliy Fedoriv
  */
 
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 // Other imports
 import { TestBed } from '@angular/core/testing';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { HttpErrorHandler } from '../error.service';
 
@@ -48,9 +41,9 @@ describe('OwnerService', () => {
   let httpClientSpy: { get: jasmine.Spy };
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [OwnerService, HttpErrorHandler],
-    });
+    imports: [],
+    providers: [OwnerService, HttpErrorHandler, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
     httpTestingController = TestBed.get(HttpTestingController);
     ownerService = TestBed.get(OwnerService);

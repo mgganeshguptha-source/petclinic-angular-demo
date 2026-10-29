@@ -30,9 +30,8 @@ import {FormsModule} from '@angular/forms';
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    imports: [FormsModule]
+    imports: [FormsModule, AppComponent]
 }).compileComponents();
   }));
 

@@ -24,12 +24,14 @@ import {Component, OnInit} from '@angular/core';
 import {OwnerService} from '../owner.service';
 import {Owner} from '../owner';
 import {Router} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-owner-add',
     templateUrl: './owner-add.component.html',
     styleUrls: ['./owner-add.component.css'],
-    standalone: false
+    imports: [FormsModule, NgIf]
 })
 export class OwnerAddComponent implements OnInit {
 

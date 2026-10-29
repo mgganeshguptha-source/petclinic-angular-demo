@@ -1,12 +1,14 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PetType} from '../pettype';
 import {PetTypeService} from '../pettype.service';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-pettype-add',
     templateUrl: './pettype-add.component.html',
     styleUrls: ['./pettype-add.component.css'],
-    standalone: false
+    imports: [FormsModule, NgIf]
 })
 export class PettypeAddComponent implements OnInit {
   pettype: PetType;

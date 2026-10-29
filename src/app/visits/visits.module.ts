@@ -46,29 +46,27 @@ export const MY_DATE_FORMATS = {
 };
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
-    VisitsRoutingModule,
-    PetsRoutingModule
-  ],
-  declarations: [
-    VisitListComponent,
-    VisitEditComponent,
-    VisitAddComponent
-  ],
-  exports: [
-    VisitListComponent,
-    VisitEditComponent,
-    VisitAddComponent
-  ],
-  providers: [
-    VisitService,
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS}
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        VisitsRoutingModule,
+        PetsRoutingModule,
+        VisitListComponent,
+        VisitEditComponent,
+        VisitAddComponent
+    ],
+    exports: [
+        VisitListComponent,
+        VisitEditComponent,
+        VisitAddComponent
+    ],
+    providers: [
+        VisitService,
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+        { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+    ]
 })
 export class VisitsModule {
 }

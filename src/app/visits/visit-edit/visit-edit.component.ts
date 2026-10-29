@@ -31,12 +31,15 @@ import {ActivatedRoute, Router} from '@angular/router';
 import * as moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
 import {PetService} from '../../pets/pet.service';
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { NgIf, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-visit-edit',
     templateUrl: './visit-edit.component.html',
     styleUrls: ['./visit-edit.component.css'],
-    standalone: false
+    imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, NgIf, DatePipe]
 })
 export class VisitEditComponent implements OnInit {
   visit: Visit;

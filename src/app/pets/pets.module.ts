@@ -48,29 +48,27 @@ export const MY_DATE_FORMATS = {
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
-    PetsRoutingModule,
-    VisitsModule
-  ],
-  declarations: [
-    PetListComponent,
-    PetEditComponent,
-    PetAddComponent
-  ],
-  exports: [
-    PetListComponent,
-    PetEditComponent,
-    PetAddComponent
-  ],
-  providers: [
-    PetService,
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS}
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        PetsRoutingModule,
+        VisitsModule,
+        PetListComponent,
+        PetEditComponent,
+        PetAddComponent
+    ],
+    exports: [
+        PetListComponent,
+        PetEditComponent,
+        PetAddComponent
+    ],
+    providers: [
+        PetService,
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+        { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+    ]
 })
 export class PetsModule {
 }

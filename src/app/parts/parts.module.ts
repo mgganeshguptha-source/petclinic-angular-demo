@@ -27,19 +27,16 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {WelcomeComponent} from './welcome/welcome.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
-  declarations: [
-    PageNotFoundComponent,
-    WelcomeComponent
-  ],
-  exports: [
-    PageNotFoundComponent,
-    WelcomeComponent
-  ]
-
+    imports: [
+        CommonModule,
+        FormsModule,
+        PageNotFoundComponent,
+        WelcomeComponent
+    ],
+    exports: [
+        PageNotFoundComponent,
+        WelcomeComponent
+    ]
 })
 export class PartsModule {
 }

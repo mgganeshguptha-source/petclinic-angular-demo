@@ -1,17 +1,17 @@
-# BCBSM caller workflow — the same file for backend (Maven) and frontend
-# (Angular) service repos. Copy to .github/workflows/SDLC-Harness.yml on the
-# service repo's default branch (master).
+# Caller workflow — petclinic-angular-demo (personal test repo, Angular / npm).
+# Lives on the default branch (main). Engine, toolkit: personal repos.
+# No library store (Maven is not used by this repo). Inputs marked * are mandatory.
 name: SDLC-Harness
 
 on:
   workflow_dispatch:
     inputs:
       feature_id:
-        description: "Story / feature id (e.g. OP018-1234)"
+        description: "Story / feature id (e.g. OP018-1234) *"
         required: true
         type: string
       base:
-        description: "Story branch: the harness reads the story, config and code from it and opens its PR into it"
+        description: "Story branch: the harness reads the story, config and code from it and opens its PR into it *"
         required: true
         type: string
       resume:
@@ -22,8 +22,19 @@ on:
         required: false
         default: false
         type: boolean
+      # Contract-only mode — hidden from the form for now (under review).
+#      contract_only:
+#        description: "Contract only: publish this repo's contract files (OpenAPI file / src/app/store/) from contract_branch to harness-metrics. No AI, no code, no PR. base = the branch that change was made against."
+#        required: false
+#        default: false
+#        type: boolean
+#      contract_branch:
+#        description: "Contract only: branch holding the finished change (e.g. the approved harness PR branch)."
+#        required: false
+#        default: ""
+#        type: string
       confirm_no_phi:
-        description: "I confirm the story and all attachments contain no real PII or PHI (mocked test data only). Required — the harness will not start without it."
+        description: "I confirm the story and all attachments contain no real PII or PHI (mocked test data only). Required — the harness will not start without it. *"
         # Shown as a checkbox, unticked by default. Must be ticked on EVERY run,
         # including resumes. Recorded with your GitHub login in the run's
         # metrics and audit. The engine also scans the story and attachments
@@ -79,7 +90,7 @@ jobs:
     # "Uses: <owner>/<repo>/.github/workflows/harness.yml@refs/tags/v1" must
     # show the client repo. (At BCBSM this still pointed at the personal repo,
     # so engine workflow fixes made in the client copy were silently ignored.)
-    uses: BCBSM/dx_SDLC-Harness/.github/workflows/harness.yml@v1
+    uses: mgganeshguptha-source/SDLC-Harness/.github/workflows/harness.yml@v1
     with:
       feature_id: ${{ inputs.feature_id }}
       base: ${{ inputs.base }}
@@ -88,6 +99,8 @@ jobs:
       node-version: "22"   # Node 20 is deprecated on GitHub runners
       resume: ${{ inputs.resume }}
       confirm_no_phi: ${{ inputs.confirm_no_phi }}
+#      contract_only: ${{ inputs.contract_only }}      # hidden — see the inputs above
+#      contract_branch: ${{ inputs.contract_branch }}
 #      start_phase: ${{ inputs.start_phase }}
       # Engine + toolkit locations. engine_repo / engine_ref MUST match the
       # repo and @ref in `uses:` above — they are the engine code the job checks
@@ -95,8 +108,8 @@ jobs:
       engine_repo: mgganeshguptha-source/SDLC-Harness
       engine_ref: v1
       toolkit_repo: mgganeshguptha-source/copilot-toolkit
-      # Toolkit's default branch. All BCBSM repos use 'master' (no 'main').
-      toolkit_ref: main 
+      # Toolkit's default branch (personal toolkit uses 'main').
+      toolkit_ref: main
       # Harness builds the code, runs unit tests + the coverage gate after
       # unit_testing (loops back on red / low coverage). false = skip; the
       # developer builds and tests locally before approving the PR.
@@ -113,8 +126,9 @@ jobs:
       # then repeat on each downloaded POM for its <parent> and dependencies.
       # Frontend (npm) repos: the store is not used for npm packages; leaving it
       # set is harmless (it only prepares Maven), or set it to "" for those repos.
-      maven_libs_repo: mgganeshguptha-source/maven-libs
-      # Branch of the store. Engine default is main; BCBSM's store uses master.
+      # Blank here: GitHub runners reach Maven Central directly, and $MAVEN_SETTINGS
+      # is then NOT set — so test/coverage commands in config.yaml must not use -s.
+      maven_libs_repo: ""
       maven_libs_ref: main
       # Toolkit proposals: when a story's answers show a toolkit skill or
       # instruction should change, raise it as a PR on toolkit_repo for the

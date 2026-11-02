@@ -24,6 +24,8 @@
     "@angular/platform-browser": "19.2.25",
     "@angular/platform-browser-dynamic": "19.2.25",
     "@angular/router": "19.2.25",
+    "@ngrx/effects": "19.2.1",
+    "@ngrx/store": "19.2.1",
     "bootstrap": "^3.3.7",
     "core-js": "^3.32.1",
     "jquery": "^3.3.1",

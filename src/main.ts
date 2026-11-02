@@ -35,6 +35,8 @@ import { SpecialtiesModule } from './app/specialties/specialties.module';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app/app.component';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 if (environment.production) {
   enableProdMode();
@@ -45,7 +47,11 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(BrowserModule, FormsModule, OwnersModule, PetsModule, VisitsModule, PetTypesModule, VetsModule, SpecialtiesModule, AppRoutingModule),
         HttpErrorHandler,
         provideHttpClient(withInterceptorsFromDi()),
-        provideAnimations()
+        provideAnimations(),
+        // NgRx root store (empty). Feature state and effects are registered by the
+        // feature that owns them (e.g. StoreModule.forFeature in its module).
+        provideStore(),
+        provideEffects()
     ]
 })
   .catch(err => console.log(err));

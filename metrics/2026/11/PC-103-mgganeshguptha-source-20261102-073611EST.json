@@ -1,0 +1,109 @@
+{
+  "ac_assumed": 3,
+  "ac_met": null,
+  "ac_not_met": null,
+  "ac_total": 33,
+  "ac_unverifiable": null,
+  "ac_verdict": null,
+  "actor": "mgganeshguptha-source",
+  "attachments": [
+    {
+      "bytes": 67166,
+      "converted_from": null,
+      "kind": "text",
+      "name": "openapi.yml",
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-103/openapi.yml"
+    },
+    {
+      "bytes": 44205,
+      "converted_from": "openapi",
+      "kind": "text",
+      "name": "openapi.yml.mock-samples.json",
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-103/openapi.yml"
+    }
+  ],
+  "blockers": 0,
+  "clarification_items": [
+    "[NEEDS CLARIFICATION]: CL-1 \u2014 Nested pet data in visit objects: (a) follow the attached contract, where `Visit` carries `petId` and no nested pet object, so the bridge publishes what that contract returns (b) the contract is wrong and a changed contract that includes nested pet data must be attached",
+    "[NEEDS CLARIFICATION]: CL-2 \u2014 Bridge payload scope (blocks AC-31): (a) publish each visit object as the API returns it (story AC8), which may include owner-linked and pet-identifying data on a page-global object (b) publish only the minimum fields the front-desk panel needs (for example id, date, st",
+    "[NEEDS CLARIFICATION]: CL-3 \u2014 Failure message text stored as error and published on the bridge: (a) the message produced by the shared HTTP error handler, which can include the server response body (b) a fixed generic message that never includes server response content."
+  ],
+  "clarifications": 3,
+  "confirm_no_phi": true,
+  "contract_output": null,
+  "cost_reported_by": "session_metrics",
+  "coverage_pct": null,
+  "credit_source": "sdk",
+  "credits_actual": null,
+  "decisions_available": 0,
+  "dependencies": {
+    "contracts": [
+      {
+        "file": "stories/PC-103/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "line": "repos",
+    "ok": true,
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "warnings": 0
+  },
+  "design_required": "YES",
+  "dur_context": 105.3,
+  "duration_sec": 106.5,
+  "engine_ref": "v1",
+  "feasibility": "GO",
+  "feature_id": "PC-103",
+  "finished_at": "2026-11-02T12:38:11Z",
+  "halt_detail": null,
+  "halt_gate": "clarification",
+  "halt_phase": "context",
+  "input_guard": {
+    "actor": "mgganeshguptha-source",
+    "attachments": 2,
+    "confirm_no_phi": true,
+    "finding_types": [],
+    "findings": 0,
+    "ok": true,
+    "phase": "context",
+    "pii_scan": true
+  },
+  "loopback_ac": 0,
+  "loopback_coverage": 0,
+  "loopback_review": 0,
+  "loopback_scope": 0,
+  "loopback_validation": 0,
+  "model_context": "claude-haiku-5.5",
+  "models_used": "claude-haiku-5.5",
+  "nano_aiu_context": 3006349000.0,
+  "nano_aiu_total": 3006349000.0,
+  "phase_seq": "repo_instructions,context",
+  "phases_run": 2,
+  "premium_cost_context": 1.0,
+  "premium_cost_total": 1.0,
+  "quality_score": 88,
+  "repo": "mgganeshguptha-source/petclinic-angular-demo",
+  "resumed": false,
+  "run_id": "41446029226",
+  "schema_version": 6,
+  "started_at": "2026-11-02T12:36:25Z",
+  "status": "needs_input",
+  "story_path": "stories/PC-103/PC-103.md",
+  "story_sha256": "1bac79909b4ec665d36eb913f75be775d7022d5d483cb5535e83b063b630b21c",
+  "tokens_cache_read": 463369,
+  "tokens_context": 598663,
+  "tokens_input": 575947,
+  "tokens_output": 22716,
+  "tokens_total": 598663,
+  "tokens_total_all_runs": 598663,
+  "toolkit_ref": "main",
+  "usage_claude-haiku-5.5_input": 575947,
+  "usage_claude-haiku-5.5_nano_aiu": 3006349000.0,
+  "usage_claude-haiku-5.5_output": 22716,
+  "usage_claude-haiku-5.5_premium_cost": 1.0,
+  "usage_claude-haiku-5.5_requests": 8
+}

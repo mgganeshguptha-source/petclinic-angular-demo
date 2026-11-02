@@ -1,0 +1,91 @@
+{
+  "feature": "PC-103",
+  "run_id": "41446029226",
+  "run_label": "PC-103-mgganeshguptha-source-20261102-073611EST",
+  "status": "needs_input",
+  "retain_audit_branch": true,
+  "completed_phases": [
+    "repo_instructions",
+    "context"
+  ],
+  "total_tokens": {
+    "input": 575947,
+    "output": 22716,
+    "cache_read": 463369,
+    "cache_write": 112560,
+    "premium_cost": 1.0,
+    "nano_aiu": 3006349000.0
+  },
+  "total_tokens_all_runs": {
+    "input": 575947,
+    "output": 22716,
+    "cache_read": 463369,
+    "cache_write": 112560,
+    "reasoning": 14730
+  },
+  "phase_token_log": [
+    {
+      "phase": "context",
+      "run_id": "41446029226",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 598663,
+      "cumulative_tokens": 598663,
+      "input_tokens": 575947,
+      "output_tokens": 22716,
+      "cached_tokens": 463369,
+      "cache_write_tokens": 112560,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "grep",
+        "glob",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 3006349000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 8,
+          "premium_cost": 1.0,
+          "nano_aiu": 3006349000.0,
+          "input": 575947,
+          "output": 22716,
+          "cache_read": 463369,
+          "reasoning": 14730
+        }
+      }
+    }
+  ],
+  "actor": "mgganeshguptha-source",
+  "sdk_usage": {
+    "total_premium_cost": 1.0,
+    "total_nano_aiu": 3006349000.0,
+    "model_usage": {
+      "claude-haiku-5.5": {
+        "requests": 8,
+        "input": 575947,
+        "output": 22716,
+        "premium_cost": 1.0,
+        "nano_aiu": 3006349000.0
+      }
+    },
+    "reported_by": "session_metrics"
+  },
+  "cost_source": {
+    "method": "sdk",
+    "is_estimate": false,
+    "basis": "Copilot SDK session.usage.getMetrics, one session per phase attempt, summed for the run; per-call assistant.usage events as fallback.",
+    "units": "premium-request cost (multipliers applied) and nano-AI units, as reported by the SDK. Not converted to AI credits or dollars: GitHub documents no conversion.",
+    "caveat": "SDK usage APIs are experimental in the pinned SDK version. Reconcile with the organization billing report before quoting a cost."
+  }
+}

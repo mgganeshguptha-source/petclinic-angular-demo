@@ -20,8 +20,12 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
+import {Subscription} from 'rxjs';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {Store} from '@ngrx/store';
+import {loadVisits} from './store/visits/visits.actions';
+import {startVisitsBridge} from './store/visits/visits-bridge';
 
 @Component({
     selector: 'app-root',
@@ -29,6 +33,16 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     styleUrls: ['./app.component.css'],
     imports: [RouterLink, RouterLinkActive, RouterOutlet]
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+  private readonly bridgeSubscription: Subscription;
+
+  constructor(store: Store) {
+    this.bridgeSubscription = startVisitsBridge(store);
+    store.dispatch(loadVisits());
+  }
+
+  ngOnDestroy(): void {
+    this.bridgeSubscription.unsubscribe();
+  }
 
 }

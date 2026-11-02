@@ -1,0 +1,16 @@
+{
+  "feature_id": "PC-102",
+  "folder": "stories/PC-102",
+  "ok": false,
+  "guard": {
+    "ok": false,
+    "confirm_no_phi": true,
+    "pii_scan": true,
+    "findings": 15,
+    "finding_types": [
+      "dob"
+    ],
+    "attachments": 2
+  },
+  "items": []
+}

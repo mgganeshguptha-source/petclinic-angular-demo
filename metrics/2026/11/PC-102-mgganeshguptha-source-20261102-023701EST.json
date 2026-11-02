@@ -1,0 +1,80 @@
+{
+  "ac_assumed": null,
+  "ac_met": null,
+  "ac_not_met": null,
+  "ac_total": null,
+  "ac_unverifiable": null,
+  "ac_verdict": null,
+  "actor": "mgganeshguptha-source",
+  "attachments": [],
+  "blockers": 0,
+  "clarification_items": null,
+  "clarifications": 0,
+  "confirm_no_phi": true,
+  "contract_output": null,
+  "cost_reported_by": null,
+  "coverage_pct": null,
+  "credit_source": "sdk",
+  "credits_actual": null,
+  "decisions_available": 0,
+  "dependencies": {
+    "contracts": [
+      {
+        "file": "stories/PC-102/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "line": "repos",
+    "ok": true,
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "warnings": 0
+  },
+  "design_required": "MISSING",
+  "duration_sec": 1.0,
+  "engine_ref": "v1",
+  "feasibility": "MISSING",
+  "feature_id": "PC-102",
+  "finished_at": "2026-11-02T07:37:20Z",
+  "halt_detail": "input guard: stories/PC-102/openapi.yml (mocked samples), line 39: DOB **/**/****",
+  "halt_gate": "input_guard",
+  "halt_phase": "repo_instructions",
+  "input_guard": {
+    "actor": "mgganeshguptha-source",
+    "attachments": 2,
+    "confirm_no_phi": true,
+    "finding_types": [
+      "dob"
+    ],
+    "findings": 15,
+    "ok": false,
+    "phase": "repo_instructions",
+    "pii_scan": true
+  },
+  "loopback_ac": 0,
+  "loopback_coverage": 0,
+  "loopback_review": 0,
+  "loopback_scope": 0,
+  "loopback_validation": 0,
+  "models_used": null,
+  "nano_aiu_total": null,
+  "phase_seq": "repo_instructions",
+  "phases_run": 0,
+  "premium_cost_total": null,
+  "quality_score": null,
+  "repo": "mgganeshguptha-source/petclinic-angular-demo",
+  "resumed": false,
+  "run_id": "41407444419",
+  "schema_version": 6,
+  "started_at": "2026-11-02T07:37:20Z",
+  "status": "halted",
+  "story_path": "stories/PC-102/PC-102.md",
+  "story_sha256": "49660433121898e9c1c3297cc1ef25c5e5362b580973c6a7fb658d92b609d09f",
+  "tokens_cache_read": 0,
+  "tokens_input": 0,
+  "tokens_output": 0,
+  "tokens_total": 0,
+  "tokens_total_all_runs": 0,
+  "toolkit_ref": "main"
+}

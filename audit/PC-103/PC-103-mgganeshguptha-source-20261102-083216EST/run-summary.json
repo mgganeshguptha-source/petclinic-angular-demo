@@ -1,0 +1,596 @@
+{
+  "feature": "PC-103",
+  "run_id": "41453806396",
+  "run_label": "PC-103-mgganeshguptha-source-20261102-083216EST",
+  "status": "halted",
+  "retain_audit_branch": true,
+  "completed_phases": [
+    "repo_instructions",
+    "context",
+    "design",
+    "prompt_steps",
+    "coding",
+    "code_review"
+  ],
+  "total_tokens": {
+    "input": 1272317,
+    "output": 17370,
+    "cache_read": 925549,
+    "cache_write": 346722,
+    "premium_cost": 5.0,
+    "nano_aiu": 47164063500.0
+  },
+  "total_tokens_all_runs": {
+    "input": 5028612,
+    "output": 96032,
+    "cache_read": 3967484,
+    "cache_write": 1060962,
+    "reasoning": 42767
+  },
+  "phase_token_log": [
+    {
+      "phase": "context",
+      "run_id": "41449334070",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 635131,
+      "cumulative_tokens": 635131,
+      "input_tokens": 618371,
+      "output_tokens": 16760,
+      "cached_tokens": 504198,
+      "cache_write_tokens": 114155,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "grep",
+        "glob",
+        "view",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 2769315500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 8,
+          "premium_cost": 1.0,
+          "nano_aiu": 2769315500.0,
+          "input": 618371,
+          "output": 16760,
+          "cache_read": 504198,
+          "reasoning": 9328
+        }
+      }
+    },
+    {
+      "phase": "context",
+      "run_id": "41450605941",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 733401,
+      "cumulative_tokens": 1368532,
+      "input_tokens": 716157,
+      "output_tokens": 17244,
+      "cached_tokens": 600145,
+      "cache_write_tokens": 115992,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "grep",
+        "glob",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 2912445000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 9,
+          "premium_cost": 1.0,
+          "nano_aiu": 2912445000.0,
+          "input": 716157,
+          "output": 17244,
+          "cache_read": 600145,
+          "reasoning": 10983
+        }
+      }
+    },
+    {
+      "phase": "prompt_steps",
+      "run_id": "41450605941",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 635859,
+      "cumulative_tokens": 2004391,
+      "input_tokens": 611968,
+      "output_tokens": 23891,
+      "cached_tokens": 523474,
+      "cache_write_tokens": 88476,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "glob",
+        "view",
+        "grep",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 4199202000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 8,
+          "premium_cost": 1.0,
+          "nano_aiu": 4199202000.0,
+          "input": 611968,
+          "output": 23891,
+          "cache_read": 523474,
+          "reasoning": 10995
+        }
+      }
+    },
+    {
+      "phase": "coding",
+      "run_id": "41450605941",
+      "model": "claude-sonnet-5.5",
+      "phase_tokens": 406185,
+      "cumulative_tokens": 2410576,
+      "input_tokens": 400669,
+      "output_tokens": 5516,
+      "cached_tokens": 329776,
+      "cache_write_tokens": 70879,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "grep",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 26536310000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-sonnet-5.5"
+      ],
+      "model_breakdown": {
+        "claude-sonnet-5.5": {
+          "requests": 6,
+          "premium_cost": 1.0,
+          "nano_aiu": 26536310000.0,
+          "input": 400669,
+          "output": 5516,
+          "cache_read": 329776,
+          "reasoning": 197
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41450605941",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 159453,
+      "cumulative_tokens": 2570029,
+      "input_tokens": 157931,
+      "output_tokens": 1522,
+      "cached_tokens": 89872,
+      "cache_write_tokens": 68053,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1016694500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1016694500.0,
+          "input": 157931,
+          "output": 1522,
+          "cache_read": 89872,
+          "reasoning": 609
+        }
+      }
+    },
+    {
+      "phase": "coding",
+      "run_id": "41450605941",
+      "model": "claude-sonnet-5.5",
+      "phase_tokens": 466705,
+      "cumulative_tokens": 3036734,
+      "input_tokens": 461721,
+      "output_tokens": 4984,
+      "cached_tokens": 403104,
+      "cache_write_tokens": 58601,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "grep",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 23668490000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-sonnet-5.5"
+      ],
+      "model_breakdown": {
+        "claude-sonnet-5.5": {
+          "requests": 7,
+          "premium_cost": 1.0,
+          "nano_aiu": 23668490000.0,
+          "input": 461721,
+          "output": 4984,
+          "cache_read": 403104,
+          "reasoning": 312
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41450605941",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 161437,
+      "cumulative_tokens": 3198171,
+      "input_tokens": 159526,
+      "output_tokens": 1911,
+      "cached_tokens": 90472,
+      "cache_write_tokens": 69048,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1049182000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1049182000.0,
+          "input": 159526,
+          "output": 1911,
+          "cache_read": 90472,
+          "reasoning": 1054
+        }
+      }
+    },
+    {
+      "phase": "coding",
+      "run_id": "41450605941",
+      "model": "claude-sonnet-5.5",
+      "phase_tokens": 474787,
+      "cumulative_tokens": 3672958,
+      "input_tokens": 469818,
+      "output_tokens": 4969,
+      "cached_tokens": 410094,
+      "cache_write_tokens": 59708,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "grep",
+        "glob",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 24000140000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-sonnet-5.5"
+      ],
+      "model_breakdown": {
+        "claude-sonnet-5.5": {
+          "requests": 7,
+          "premium_cost": 1.0,
+          "nano_aiu": 24000140000.0,
+          "input": 469818,
+          "output": 4969,
+          "cache_read": 410094,
+          "reasoning": 434
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41450605941",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 161999,
+      "cumulative_tokens": 3834957,
+      "input_tokens": 160134,
+      "output_tokens": 1865,
+      "cached_tokens": 90800,
+      "cache_write_tokens": 69328,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1050710000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1050710000.0,
+          "input": 160134,
+          "output": 1865,
+          "cache_read": 90800,
+          "reasoning": 807
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41453806396",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 161133,
+      "cumulative_tokens": 3996090,
+      "input_tokens": 158583,
+      "output_tokens": 2550,
+      "cached_tokens": 78106,
+      "cache_write_tokens": 80471,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1211553500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1211553500.0,
+          "input": 158583,
+          "output": 2550,
+          "cache_read": 78106,
+          "reasoning": 1494
+        }
+      }
+    },
+    {
+      "phase": "coding",
+      "run_id": "41453806396",
+      "model": "claude-sonnet-5.5",
+      "phase_tokens": 542439,
+      "cumulative_tokens": 4538529,
+      "input_tokens": 537527,
+      "output_tokens": 4912,
+      "cached_tokens": 466455,
+      "cache_write_tokens": 71054,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "glob",
+        "grep",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 27343650000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-sonnet-5.5"
+      ],
+      "model_breakdown": {
+        "claude-sonnet-5.5": {
+          "requests": 8,
+          "premium_cost": 1.0,
+          "nano_aiu": 27343650000.0,
+          "input": 537527,
+          "output": 4912,
+          "cache_read": 466455,
+          "reasoning": 402
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41453806396",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 166743,
+      "cumulative_tokens": 4705272,
+      "input_tokens": 162099,
+      "output_tokens": 4644,
+      "cached_tokens": 90418,
+      "cache_write_tokens": 71675,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1218615500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1218615500.0,
+          "input": 162099,
+          "output": 4644,
+          "cache_read": 90418,
+          "reasoning": 3342
+        }
+      }
+    },
+    {
+      "phase": "coding",
+      "run_id": "41453806396",
+      "model": "claude-sonnet-5.5",
+      "phase_tokens": 252998,
+      "cumulative_tokens": 4958270,
+      "input_tokens": 251806,
+      "output_tokens": 1192,
+      "cached_tokens": 199753,
+      "cache_write_tokens": 52043,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "view",
+        "edit",
+        "bash"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 16202280000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-sonnet-5.5"
+      ],
+      "model_breakdown": {
+        "claude-sonnet-5.5": {
+          "requests": 4,
+          "premium_cost": 1.0,
+          "nano_aiu": 16202280000.0,
+          "input": 251806,
+          "output": 1192,
+          "cache_read": 199753,
+          "reasoning": 0
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41453806396",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 166374,
+      "cumulative_tokens": 5124644,
+      "input_tokens": 162302,
+      "output_tokens": 4072,
+      "cached_tokens": 90817,
+      "cache_write_tokens": 71479,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1187964500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1187964500.0,
+          "input": 162302,
+          "output": 4072,
+          "cache_read": 90817,
+          "reasoning": 2810
+        }
+      }
+    }
+  ],
+  "actor": "mgganeshguptha-source",
+  "sdk_usage": {
+    "total_premium_cost": 14.0,
+    "total_nano_aiu": 134366552500.0,
+    "model_usage": {
+      "claude-haiku-5.5": {
+        "requests": 37,
+        "input": 2907071,
+        "output": 74459,
+        "premium_cost": 9.0,
+        "nano_aiu": 16615682500.0
+      },
+      "claude-sonnet-5.5": {
+        "requests": 32,
+        "input": 2121541,
+        "output": 21573,
+        "premium_cost": 5.0,
+        "nano_aiu": 117750870000.0
+      }
+    },
+    "reported_by": "session_metrics"
+  },
+  "cost_source": {
+    "method": "sdk",
+    "is_estimate": false,
+    "basis": "Copilot SDK session.usage.getMetrics, one session per phase attempt, summed for the run; per-call assistant.usage events as fallback.",
+    "units": "premium-request cost (multipliers applied) and nano-AI units, as reported by the SDK. Not converted to AI credits or dollars: GitHub documents no conversion.",
+    "caveat": "SDK usage APIs are experimental in the pinned SDK version. Reconcile with the organization billing report before quoting a cost."
+  }
+}

@@ -32,6 +32,10 @@ import {PetsRoutingModule} from '../pets/pets-routing.module';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {VISITS_FEATURE_KEY, visitsReducer} from '../store/visits/visits.reducer';
+import {VisitsEffects} from '../store/visits/visits.effects';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -51,6 +55,8 @@ export const MY_DATE_FORMATS = {
         FormsModule,
         MatDatepickerModule,
         MatMomentDateModule,
+        StoreModule.forFeature(VISITS_FEATURE_KEY, visitsReducer),
+        EffectsModule.forFeature([VisitsEffects]),
         VisitsRoutingModule,
         PetsRoutingModule,
         VisitListComponent,

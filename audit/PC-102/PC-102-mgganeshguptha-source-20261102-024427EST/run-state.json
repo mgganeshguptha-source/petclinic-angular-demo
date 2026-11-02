@@ -1,0 +1,426 @@
+{
+  "feature_id": "PC-102",
+  "story": "Title: Show each visit's status on the owner detail page\n\nStory: As a clinic receptionist, I want to see the status of every visit on the owner's page, so that I can tell at a glance which visits are scheduled, done or cancelled.\n\n**Requires a new or changed contract from:** petclinic-rest-api\n\nExpected behaviour:\n- The backend now returns a `status` on every visit (story PC-101). Its allowed values are defined by the `VisitStatus` enum in the attached `openapi.yml`: `SCHEDULED`, `COMPLETED`, `CANCELLED`. Use only these values; do not add others.\n- The owner detail page (`/owners/{id}`) lists each pet with its visits (`app-pet-list` \u2192 `app-visit-list`). Add a **Status** column to that visit table, between **Description** and **Actions**.\n- Show a readable label, not the raw value: `SCHEDULED` \u2192 \"Scheduled\", `COMPLETED` \u2192 \"Completed\", `CANCELLED` \u2192 \"Cancelled\".\n- When a visit has no `status` (an older backend, or the field is missing or null), show \"Not set\". When it has a value outside the three above, show the raw value as it came. The page must never fail to render because of the status.\n- The visits come nested in the owner response (`GET /api/owners/{ownerId}` \u2192 `pets[].visits[]`); no new API call is needed.\n\nAcceptance criteria:\n- AC1: The `Visit` model has an optional `status` typed with exactly the three values from the attached contract (`'SCHEDULED' | 'COMPLETED' | 'CANCELLED'`), defined once and reused, not repeated as string literals across components.\n- AC2: On the owner detail page, every visit row shows a Status column, placed between Description and Actions, with the header \"Status\".\n- AC3: A visit with `status: \"SCHEDULED\"` shows \"Scheduled\"; `\"COMPLETED\"` shows \"Completed\"; `\"CANCELLED\"` shows \"Cancelled\".\n- AC4: A visit with no `status` (field missing or null) shows \"Not set\"; a visit with an unexpected value (e.g. `\"DONE\"`) shows that value unchanged. Neither causes an error in the browser console.\n- AC5: Visit dates, descriptions and the Edit Visit / Delete Visit buttons behave exactly as before.\n- AC6: `npm install \u2026 && npx ng build --configuration development` passes.\n- AC7 (CL-1): A `status` that is an empty string or only spaces is treated as missing and shows \"Not set\".\n\nIn scope:\n- `src/app/visits/visit.ts` (status type and field).\n- `src/app/visits/visit-list/visit-list.component.ts` and `.html` (Status column and label mapping). A small shared helper or pipe under `src/app/visits/` is fine if it keeps the mapping in one place.\n\nOut of scope: setting or editing the status (the add-visit and edit-visit forms stay as they are), the visits list on any other page, styling beyond a plain table cell, NgRx (this app has no store), backend changes, unit tests (this repo runs build-only).\n\nAttachments:\n- `stories/PC-102/openapi.yml` \u2014 petclinic-rest-api's OpenAPI file after PC-101, copied as it is (from its `harness-metrics` branch, `contracts/PC-101/files/src/main/resources/openapi.yml`). Defines `VisitStatus` and the `status` property on `VisitFields` / `Visit`.",
+  "current_phase": "unit_testing",
+  "status": "halted",
+  "story_path": "stories/PC-102/PC-102.md",
+  "story_sha256": "1e491e80c8ff3a4a680732808a0e48403e006fd40a94cb9252bfa1179ef618a6",
+  "attachments": [
+    {
+      "name": "openapi.yml",
+      "kind": "text",
+      "bytes": 67166,
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-102/openapi.yml",
+      "converted_from": null
+    },
+    {
+      "name": "openapi.yml.mock-samples.json",
+      "kind": "text",
+      "bytes": 44205,
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-102/openapi.yml",
+      "converted_from": "openapi"
+    }
+  ],
+  "input_guard": {
+    "ok": true,
+    "confirm_no_phi": true,
+    "pii_scan": true,
+    "findings": 0,
+    "finding_types": [],
+    "attachments": 2,
+    "phase": "code_review",
+    "actor": "mgganeshguptha-source"
+  },
+  "dependencies": {
+    "line": "repos",
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "contracts": [
+      {
+        "file": "stories/PC-102/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "warnings": 0,
+    "ok": true
+  },
+  "contract_output": {},
+  "clarification_log": [],
+  "completed_phases": [
+    "repo_instructions",
+    "context",
+    "design",
+    "prompt_steps",
+    "coding",
+    "code_review",
+    "unit_testing"
+  ],
+  "approvals": {
+    "context": "approved",
+    "prompt_steps": "approved",
+    "coding": "approved"
+  },
+  "last_feedback": "\n  ================ ENVIRONMENT FAILURE: HALTED ================\n  The build could not be completed for a reason outside the code \u2014\n  no phase can fix it, so the harness stopped instead of looping.\n  Detail : ENVIRONMENT FAILURE (exit 127) \u2014 build tool could not start\n  Reason : toolchain\n  Action : The build tool could not start. Check that the Maven wrapper is complete\n           (mvnw plus .mvn/wrapper/), executable, and uses LF line endings,\n           and that a JDK is on the runner. The harness workflow makes\n           mvnw executable and falls back to the runner's mvn when\n           .mvn/wrapper/ is missing \u2014 if this still fails, the wrapper\n           or JDK setup on the runner needs attention.\n  Resume : feature_id=PC-102, resume=true, start_phase=unit_testing\n  --- build output tail ---\nnpm warn deprecated har-validator@5.1.5: this library is no longer supported\nnpm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).\nnpm warn deprecated q@1.4.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.\nnpm warn deprecated\nnpm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\nnpm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\nnpm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\nnpm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated protractor@7.0.0: We have news to share - Protractor is deprecated and will reach end-of-life by Summer 2023. To learn more and find out about other options please refer to this post on the Angular blog. Thank you for using and contributing to Protractor. https://goo.gle/state-of-e2e-in-angular\nnpm warn deprecated bootstrap@3.4.1: This version of Bootstrap is no longer supported. Please upgrade to the latest version.\nnpm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\nAn unhandled exception occurred: Configuration 'development' for target 'build' in project 'spring-petclinic-angular' is not set in the workspace.\nSee \"/tmp/ng-ONMVQT/angular-errors.log\" for further details.\n  ============================================================\n",
+  "iterations": {
+    "__runs__:repo_instructions": 1,
+    "repo_instructions": 1,
+    "__runs__:context": 1,
+    "context": 1,
+    "__runs__:design": 1,
+    "__runs__:prompt_steps": 1,
+    "prompt_steps": 1,
+    "__runs__:coding": 1,
+    "coding": 1,
+    "__runs__:code_review": 1,
+    "code_review": 1,
+    "__runs__:unit_testing": 1
+  },
+  "validation_attempts": 0,
+  "coverage_attempts": 0,
+  "changed_main_files": [
+    "src/app/visits/visit-status.ts",
+    "src/app/visits/visit.ts",
+    "src/app/visits/visit-status-label.pipe.ts",
+    "src/app/visits/visit-list/visit-list.component.html",
+    "src/app/visits/visit-list/visit-list.component.ts"
+  ],
+  "halt_gate": "config_error",
+  "halt_detail": "environment (toolchain): ENVIRONMENT FAILURE (exit 127) \u2014 build tool could not start",
+  "phase_durations": {
+    "repo_instructions": 31.0,
+    "context": 61.4,
+    "prompt_steps": 59.5,
+    "coding": 16.9,
+    "code_review": 14.4,
+    "unit_testing": 0.0
+  },
+  "started_at": "2026-11-02T07:44:41Z",
+  "actor": "mgganeshguptha-source",
+  "credits_actual": null,
+  "denied_writes": [],
+  "last_validation_loopback": "",
+  "contract_snapshot": {},
+  "ac_attempts": 0,
+  "review_attempts": 0,
+  "scope_attempts": 0,
+  "total_tokens": {
+    "input": 1486263,
+    "output": 36613,
+    "cache_read": 1154873,
+    "cache_write": 331336,
+    "reasoning": 15329
+  },
+  "phase_token_log": [
+    {
+      "phase": "repo_instructions",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 229996,
+      "cumulative_tokens": 229996,
+      "input_tokens": 224144,
+      "output_tokens": 5852,
+      "cached_tokens": 182561,
+      "cache_write_tokens": 41571,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "glob",
+        "view",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 994918500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 5,
+          "premium_cost": 1.0,
+          "nano_aiu": 994918500.0,
+          "input": 224144,
+          "output": 5852,
+          "cache_read": 182561,
+          "reasoning": 1104
+        }
+      }
+    },
+    {
+      "phase": "context",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 441009,
+      "cumulative_tokens": 671005,
+      "input_tokens": 428674,
+      "output_tokens": 12335,
+      "cached_tokens": 344224,
+      "cache_write_tokens": 84438,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "grep",
+        "glob",
+        "bash",
+        "view",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 2016569000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 5,
+          "premium_cost": 1.0,
+          "nano_aiu": 2016569000.0,
+          "input": 428674,
+          "output": 12335,
+          "cache_read": 344224,
+          "reasoning": 7858
+        }
+      }
+    },
+    {
+      "phase": "prompt_steps",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 445978,
+      "cumulative_tokens": 1116983,
+      "input_tokens": 432622,
+      "output_tokens": 13356,
+      "cached_tokens": 357784,
+      "cache_write_tokens": 74824,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "glob",
+        "grep",
+        "view",
+        "bash",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1961024000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 6,
+          "premium_cost": 1.0,
+          "nano_aiu": 1961024000.0,
+          "input": 432622,
+          "output": 13356,
+          "cache_read": 357784,
+          "reasoning": 4684
+        }
+      }
+    },
+    {
+      "phase": "coding",
+      "run_id": "41408227782",
+      "model": "claude-sonnet-5.5",
+      "phase_tokens": 251675,
+      "cumulative_tokens": 1368658,
+      "input_tokens": 249134,
+      "output_tokens": 2541,
+      "cached_tokens": 184032,
+      "cache_write_tokens": 65092,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 20656320000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-sonnet-5.5"
+      ],
+      "model_breakdown": {
+        "claude-sonnet-5.5": {
+          "requests": 4,
+          "premium_cost": 1.0,
+          "nano_aiu": 20656320000.0,
+          "input": 249134,
+          "output": 2541,
+          "cache_read": 184032,
+          "reasoning": 0
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 154218,
+      "cumulative_tokens": 1522876,
+      "input_tokens": 151689,
+      "output_tokens": 2529,
+      "cached_tokens": 86272,
+      "cache_write_tokens": 65411,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1030419500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1030419500.0,
+          "input": 151689,
+          "output": 2529,
+          "cache_read": 86272,
+          "reasoning": 1683
+        }
+      }
+    }
+  ],
+  "phase_model_log": [
+    {
+      "phase": "repo_instructions",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "context",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "prompt_steps",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "coding",
+      "model": "claude-sonnet-5.5"
+    },
+    {
+      "phase": "code_review",
+      "model": "claude-haiku-5.5"
+    }
+  ],
+  "phase_credit_log": [
+    {
+      "phase": "repo_instructions",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 994918500.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "context",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 2016569000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "prompt_steps",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 1961024000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "coding",
+      "model": "claude-sonnet-5.5",
+      "configured_model": "claude-sonnet-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 20656320000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "code_review",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 1030419500.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "unit_testing",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": null,
+      "nano_aiu": null,
+      "credit_source": "sdk",
+      "is_estimate": false
+    }
+  ],
+  "total_premium_cost": 5.0,
+  "total_nano_aiu": 26659251000.0,
+  "model_usage": {
+    "claude-haiku-5.5": {
+      "requests": 18,
+      "input": 1237129,
+      "output": 34072,
+      "premium_cost": 4.0,
+      "nano_aiu": 6002931000.0
+    },
+    "claude-sonnet-5.5": {
+      "requests": 4,
+      "input": 249134,
+      "output": 2541,
+      "premium_cost": 1.0,
+      "nano_aiu": 20656320000.0
+    }
+  },
+  "cost_source": "session_metrics"
+}

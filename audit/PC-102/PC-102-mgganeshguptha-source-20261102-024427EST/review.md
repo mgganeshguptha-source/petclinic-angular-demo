@@ -1,0 +1,6 @@
+VERDICT: PASS
+[NOTE]: visit-status-label.pipe.ts returns "Not set" for any non-string, non-null value (for example a number). The story says unexpected values should be shown as received. The API contract types status as a string, so this is unlikely to occur. Consider `String(value)` for non-null, non-string input if you want strict adherence.
+[NOTE]: The plan (Step 3) specified a `ReadonlyMap` for the labels. The code uses a `Readonly<Record<...>>` with a `hasOwnProperty` guard instead. This is safe against prototype keys such as `constructor`, so behaviour is correct.
+[NOTE]: Plan CL-A is unresolved in the code. The Status column also appears on the Add Visit page, because `visit-add` embeds `app-visit-list`. The story lists "the visits list on any other page" as out of scope. Confirm this is accepted.
+[NOTE]: The `VisitStatus` union values and the `status` property were not verified against the attached openapi.yml, because its content was not inlined for this review. Please confirm `SCHEDULED`, `COMPLETED` and `CANCELLED` match `VisitStatus` in that file.
+[NOTE]: The pipe is declared without `standalone: true`. This is correct in Angular 19, where standalone is the default. It is consistent with the component's standalone `imports` usage.

@@ -1,0 +1,112 @@
+{
+  "ac_assumed": 1,
+  "ac_met": null,
+  "ac_not_met": null,
+  "ac_total": 19,
+  "ac_unverifiable": null,
+  "ac_verdict": null,
+  "actor": "mgganeshguptha-source",
+  "attachments": [
+    {
+      "bytes": 67166,
+      "converted_from": null,
+      "kind": "text",
+      "name": "openapi.yml",
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-102/openapi.yml"
+    },
+    {
+      "bytes": 44205,
+      "converted_from": "openapi",
+      "kind": "text",
+      "name": "openapi.yml.mock-samples.json",
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-102/openapi.yml"
+    }
+  ],
+  "blockers": 0,
+  "clarification_items": [
+    "[NEEDS CLARIFICATION]: CL-1 \u2014 Empty-string status value: (a) display \"Not set\" (b) display an empty cell, as an unexpected value shown unchanged"
+  ],
+  "clarifications": 1,
+  "confirm_no_phi": true,
+  "contract_output": null,
+  "cost_reported_by": "session_metrics",
+  "coverage_pct": null,
+  "credit_source": "sdk",
+  "credits_actual": null,
+  "decisions_available": 0,
+  "dependencies": {
+    "contracts": [
+      {
+        "file": "stories/PC-102/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "line": "repos",
+    "ok": true,
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "warnings": 0
+  },
+  "design_required": "NO",
+  "dur_context": 49.1,
+  "dur_repo_instructions": 36.0,
+  "duration_sec": 85.8,
+  "engine_ref": "v1",
+  "feasibility": "GO",
+  "feature_id": "PC-102",
+  "finished_at": "2026-11-02T07:40:23Z",
+  "halt_detail": null,
+  "halt_gate": "clarification",
+  "halt_phase": "context",
+  "input_guard": {
+    "actor": "mgganeshguptha-source",
+    "attachments": 2,
+    "confirm_no_phi": true,
+    "finding_types": [],
+    "findings": 0,
+    "ok": true,
+    "phase": "context",
+    "pii_scan": true
+  },
+  "loopback_ac": 0,
+  "loopback_coverage": 0,
+  "loopback_review": 0,
+  "loopback_scope": 0,
+  "loopback_validation": 0,
+  "model_context": "claude-haiku-5.5",
+  "model_repo_instructions": "claude-haiku-5.5",
+  "models_used": "claude-haiku-5.5",
+  "nano_aiu_context": 2067621000.0,
+  "nano_aiu_repo_instructions": 1402865000.0,
+  "nano_aiu_total": 3470486000.0,
+  "phase_seq": "repo_instructions,context",
+  "phases_run": 2,
+  "premium_cost_context": 1.0,
+  "premium_cost_repo_instructions": 1.0,
+  "premium_cost_total": 2.0,
+  "quality_score": 91,
+  "repo": "mgganeshguptha-source/petclinic-angular-demo",
+  "resumed": false,
+  "run_id": "41407618626",
+  "schema_version": 6,
+  "started_at": "2026-11-02T07:38:58Z",
+  "status": "needs_input",
+  "story_path": "stories/PC-102/PC-102.md",
+  "story_sha256": "49660433121898e9c1c3297cc1ef25c5e5362b580973c6a7fb658d92b609d09f",
+  "tokens_cache_read": 764561,
+  "tokens_context": 614312,
+  "tokens_input": 910605,
+  "tokens_output": 17609,
+  "tokens_repo_instructions": 313902,
+  "tokens_total": 928214,
+  "tokens_total_all_runs": 928214,
+  "toolkit_ref": "main",
+  "usage_claude-haiku-5.5_input": 910605,
+  "usage_claude-haiku-5.5_nano_aiu": 3470486000.0,
+  "usage_claude-haiku-5.5_output": 17609,
+  "usage_claude-haiku-5.5_premium_cost": 2.0,
+  "usage_claude-haiku-5.5_requests": 13
+}

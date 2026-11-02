@@ -1,0 +1,149 @@
+{
+  "phases": {
+    "repo_instructions": {
+      "recorded_at": "2026-11-02T07:38:59+00:00",
+      "instructions": [
+        {
+          "name": "copilot-output-naming.instructions.md",
+          "path": ".github/instructions/copilot-output-naming.instructions.md",
+          "bytes": 6301,
+          "sha256": "2f2c719b0b42f85f6387ebc0e904e68a12bae033ff78831d790d981f899d8b50"
+        },
+        {
+          "name": "hipaa-guardrails.instructions.md",
+          "path": ".github/instructions/hipaa-guardrails.instructions.md",
+          "bytes": 3345,
+          "sha256": "a320060dc1856b855072b1c12b23c9ca3237f5058dc78a80655d5098857eaec8"
+        },
+        {
+          "name": "logging-standards.instructions.md",
+          "path": ".github/instructions/logging-standards.instructions.md",
+          "bytes": 2794,
+          "sha256": "ce54507d0f0d95628d2085cb928eb648392528dd2cd53112f5f1ac544ac42cff"
+        },
+        {
+          "name": "prompt-injection-guardrails.instructions.md",
+          "path": ".github/instructions/prompt-injection-guardrails.instructions.md",
+          "bytes": 3869,
+          "sha256": "327ac5a63246dd037f9b7c328328f9402892c129bafc925b48f10e18d13732ff"
+        }
+      ],
+      "skills": [
+        {
+          "name": "SKILL.md",
+          "path": ".github/skills/build-copilot-instructions-angular-frontend/SKILL.md",
+          "bytes": 8574,
+          "sha256": "799fe5db1828584d725f3821a53f236e5dceef01f71dbe18ccad4b34eeef9f5d",
+          "skill": "build-copilot-instructions-angular-frontend"
+        }
+      ],
+      "assets": [
+        {
+          "name": "copilot-instructions-frontend-template.md",
+          "path": ".github/skills/build-copilot-instructions-angular-frontend/assets/copilot-instructions-frontend-template.md",
+          "bytes": 5812,
+          "sha256": "d898a376ee53c72dd770ab823f39d3b6f4f6b4ed2b3b57cd4348bb623bd30280",
+          "for_skill": "build-copilot-instructions-angular-frontend"
+        }
+      ],
+      "knowledge": []
+    },
+    "context": {
+      "recorded_at": "2026-11-02T07:39:34+00:00",
+      "instructions": [
+        {
+          "name": "angular-conventions.instructions.md",
+          "path": ".github/instructions/angular-frontend/angular-conventions.instructions.md",
+          "bytes": 1468,
+          "sha256": "b4e5f92e2a76b936a83afc9fa1f65d8a83b421b56c5f9b74098ef0245ec0b68c"
+        },
+        {
+          "name": "angular-security.instructions.md",
+          "path": ".github/instructions/angular-frontend/angular-security.instructions.md",
+          "bytes": 4042,
+          "sha256": "6f3ce6f6b16aa0621fe4e0081349600ade417f23cd446c238f7f030ca448d3f3"
+        },
+        {
+          "name": "angular-testing.instructions.md",
+          "path": ".github/instructions/angular-frontend/angular-testing.instructions.md",
+          "bytes": 1167,
+          "sha256": "6e2d92ac04933f721b97b14c3357a1b052c4b49acc628434e5aa6e15db2bed3d"
+        },
+        {
+          "name": "error-handling-angular.instructions.md",
+          "path": ".github/instructions/angular-frontend/error-handling-angular.instructions.md",
+          "bytes": 4891,
+          "sha256": "c7d69ab2cde18207effc5125dd724325d15c2a39534b1393ce5add096121bd50"
+        },
+        {
+          "name": "logging-angular.instructions.md",
+          "path": ".github/instructions/angular-frontend/logging-angular.instructions.md",
+          "bytes": 3703,
+          "sha256": "1b92053f259312d38e81bea899985800ee9a06e2b4ef3e023a54ae2eccc1ea73"
+        },
+        {
+          "name": "owasp-angular.instructions.md",
+          "path": ".github/instructions/angular-frontend/owasp-angular.instructions.md",
+          "bytes": 4319,
+          "sha256": "d0ec3fe267ff731a840e78792e51809a53b73154a691a89a73e90f708438e090"
+        },
+        {
+          "name": "performance-angular.instructions.md",
+          "path": ".github/instructions/angular-frontend/performance-angular.instructions.md",
+          "bytes": 5502,
+          "sha256": "912640806c3884cb68ecb7d61af74f2226f9a4258fea6f1e1d0579869051f5aa"
+        },
+        {
+          "name": "copilot-output-naming.instructions.md",
+          "path": ".github/instructions/copilot-output-naming.instructions.md",
+          "bytes": 6301,
+          "sha256": "2f2c719b0b42f85f6387ebc0e904e68a12bae033ff78831d790d981f899d8b50"
+        },
+        {
+          "name": "hipaa-guardrails.instructions.md",
+          "path": ".github/instructions/hipaa-guardrails.instructions.md",
+          "bytes": 3345,
+          "sha256": "a320060dc1856b855072b1c12b23c9ca3237f5058dc78a80655d5098857eaec8"
+        },
+        {
+          "name": "logging-standards.instructions.md",
+          "path": ".github/instructions/logging-standards.instructions.md",
+          "bytes": 2794,
+          "sha256": "ce54507d0f0d95628d2085cb928eb648392528dd2cd53112f5f1ac544ac42cff"
+        },
+        {
+          "name": "prompt-injection-guardrails.instructions.md",
+          "path": ".github/instructions/prompt-injection-guardrails.instructions.md",
+          "bytes": 3869,
+          "sha256": "327ac5a63246dd037f9b7c328328f9402892c129bafc925b48f10e18d13732ff"
+        },
+        {
+          "name": "copilot-instructions.md",
+          "path": ".github/copilot-instructions.md",
+          "bytes": 8017,
+          "sha256": "325a1e98af02d0f18ed5b1e86bd466582805a8c1a2a66b82370fff7b00a0f679",
+          "repo_wide": true
+        }
+      ],
+      "skills": [
+        {
+          "name": "SKILL.md",
+          "path": ".github/skills/build-context/SKILL.md",
+          "bytes": 60323,
+          "sha256": "b794278eccb35480be095cc6f54c78983358118e42893606c98962e43069ab92",
+          "skill": "build-context"
+        }
+      ],
+      "assets": [
+        {
+          "name": "context-template.md",
+          "path": ".github/skills/build-context/assets/context-template.md",
+          "bytes": 21966,
+          "sha256": "2cce3a21199e2328848a770ba8de51a2a531b573f5620b677ce84b07c8205061",
+          "for_skill": "build-context"
+        }
+      ],
+      "knowledge": []
+    }
+  }
+}

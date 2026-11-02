@@ -1,0 +1,228 @@
+{
+  "feature_id": "PC-102",
+  "story": "Title: Show each visit's status on the owner detail page\n\nStory: As a clinic receptionist, I want to see the status of every visit on the owner's page, so that I can tell at a glance which visits are scheduled, done or cancelled.\n\n**Requires a new or changed contract from:** petclinic-rest-api\n\nExpected behaviour:\n- The backend now returns a `status` on every visit (story PC-101). Its allowed values are defined by the `VisitStatus` enum in the attached `openapi.yml`: `SCHEDULED`, `COMPLETED`, `CANCELLED`. Use only these values; do not add others.\n- The owner detail page (`/owners/{id}`) lists each pet with its visits (`app-pet-list` \u2192 `app-visit-list`). Add a **Status** column to that visit table, between **Description** and **Actions**.\n- Show a readable label, not the raw value: `SCHEDULED` \u2192 \"Scheduled\", `COMPLETED` \u2192 \"Completed\", `CANCELLED` \u2192 \"Cancelled\".\n- When a visit has no `status` (an older backend, or the field is missing or null), show \"Not set\". When it has a value outside the three above, show the raw value as it came. The page must never fail to render because of the status.\n- The visits come nested in the owner response (`GET /api/owners/{ownerId}` \u2192 `pets[].visits[]`); no new API call is needed.\n\nAcceptance criteria:\n- AC1: The `Visit` model has an optional `status` typed with exactly the three values from the attached contract (`'SCHEDULED' | 'COMPLETED' | 'CANCELLED'`), defined once and reused, not repeated as string literals across components.\n- AC2: On the owner detail page, every visit row shows a Status column, placed between Description and Actions, with the header \"Status\".\n- AC3: A visit with `status: \"SCHEDULED\"` shows \"Scheduled\"; `\"COMPLETED\"` shows \"Completed\"; `\"CANCELLED\"` shows \"Cancelled\".\n- AC4: A visit with no `status` (field missing or null) shows \"Not set\"; a visit with an unexpected value (e.g. `\"DONE\"`) shows that value unchanged. Neither causes an error in the browser console.\n- AC5: Visit dates, descriptions and the Edit Visit / Delete Visit buttons behave exactly as before.\n- AC6: `npm install \u2026 && npx ng build --configuration development` passes.\n\nIn scope:\n- `src/app/visits/visit.ts` (status type and field).\n- `src/app/visits/visit-list/visit-list.component.ts` and `.html` (Status column and label mapping). A small shared helper or pipe under `src/app/visits/` is fine if it keeps the mapping in one place.\n\nOut of scope: setting or editing the status (the add-visit and edit-visit forms stay as they are), the visits list on any other page, styling beyond a plain table cell, NgRx (this app has no store), backend changes, unit tests (this repo runs build-only).\n\nAttachments:\n- `stories/PC-102/openapi.yml` \u2014 petclinic-rest-api's OpenAPI file after PC-101, copied as it is (from its `harness-metrics` branch, `contracts/PC-101/files/src/main/resources/openapi.yml`). Defines `VisitStatus` and the `status` property on `VisitFields` / `Visit`.",
+  "current_phase": "context",
+  "status": "needs_input",
+  "story_path": "stories/PC-102/PC-102.md",
+  "story_sha256": "49660433121898e9c1c3297cc1ef25c5e5362b580973c6a7fb658d92b609d09f",
+  "attachments": [
+    {
+      "name": "openapi.yml",
+      "kind": "text",
+      "bytes": 67166,
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-102/openapi.yml",
+      "converted_from": null
+    },
+    {
+      "name": "openapi.yml.mock-samples.json",
+      "kind": "text",
+      "bytes": 44205,
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-102/openapi.yml",
+      "converted_from": "openapi"
+    }
+  ],
+  "input_guard": {
+    "ok": true,
+    "confirm_no_phi": true,
+    "pii_scan": true,
+    "findings": 0,
+    "finding_types": [],
+    "attachments": 2,
+    "phase": "context",
+    "actor": "mgganeshguptha-source"
+  },
+  "dependencies": {
+    "line": "repos",
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "contracts": [
+      {
+        "file": "stories/PC-102/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "warnings": 0,
+    "ok": true
+  },
+  "contract_output": {},
+  "clarification_log": [
+    {
+      "run_id": "41407618626",
+      "story_sha256": "49660433121898e9c1c3297cc1ef25c5e5362b580973c6a7fb658d92b609d09f",
+      "questions": [
+        "[NEEDS CLARIFICATION]: CL-1 \u2014 Empty-string status value: (a) display \"Not set\" (b) display an empty cell, as an unexpected value shown unchanged"
+      ]
+    }
+  ],
+  "completed_phases": [
+    "repo_instructions",
+    "context"
+  ],
+  "approvals": {},
+  "last_feedback": null,
+  "iterations": {
+    "__runs__:repo_instructions": 1,
+    "repo_instructions": 1,
+    "__runs__:context": 1,
+    "context": 1
+  },
+  "validation_attempts": 0,
+  "coverage_attempts": 0,
+  "changed_main_files": [],
+  "halt_gate": "clarification",
+  "halt_detail": null,
+  "phase_durations": {
+    "repo_instructions": 36.0,
+    "context": 49.1
+  },
+  "started_at": "2026-11-02T07:38:58Z",
+  "actor": "mgganeshguptha-source",
+  "credits_actual": null,
+  "denied_writes": [],
+  "last_validation_loopback": "",
+  "contract_snapshot": {},
+  "ac_attempts": 0,
+  "review_attempts": 0,
+  "scope_attempts": 0,
+  "total_tokens": {
+    "input": 910605,
+    "output": 17609,
+    "cache_read": 764561,
+    "cache_write": 146014,
+    "reasoning": 6687
+  },
+  "phase_token_log": [
+    {
+      "phase": "repo_instructions",
+      "run_id": "41407618626",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 313902,
+      "cumulative_tokens": 313902,
+      "input_tokens": 306544,
+      "output_tokens": 7358,
+      "cached_tokens": 243200,
+      "cache_write_tokens": 63330,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "glob",
+        "view",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1402865000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 6,
+          "premium_cost": 1.0,
+          "nano_aiu": 1402865000.0,
+          "input": 306544,
+          "output": 7358,
+          "cache_read": 243200,
+          "reasoning": 2000
+        }
+      }
+    },
+    {
+      "phase": "context",
+      "run_id": "41407618626",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 614312,
+      "cumulative_tokens": 928214,
+      "input_tokens": 604061,
+      "output_tokens": 10251,
+      "cached_tokens": 521361,
+      "cache_write_tokens": 82684,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "grep",
+        "glob",
+        "view",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 2067621000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 7,
+          "premium_cost": 1.0,
+          "nano_aiu": 2067621000.0,
+          "input": 604061,
+          "output": 10251,
+          "cache_read": 521361,
+          "reasoning": 4687
+        }
+      }
+    }
+  ],
+  "phase_model_log": [
+    {
+      "phase": "repo_instructions",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "context",
+      "model": "claude-haiku-5.5"
+    }
+  ],
+  "phase_credit_log": [
+    {
+      "phase": "repo_instructions",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 1402865000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "context",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 2067621000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    }
+  ],
+  "total_premium_cost": 2.0,
+  "total_nano_aiu": 3470486000.0,
+  "model_usage": {
+    "claude-haiku-5.5": {
+      "requests": 13,
+      "input": 910605,
+      "output": 17609,
+      "premium_cost": 2.0,
+      "nano_aiu": 3470486000.0
+    }
+  },
+  "cost_source": "session_metrics"
+}

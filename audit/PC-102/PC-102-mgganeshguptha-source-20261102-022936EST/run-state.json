@@ -1,0 +1,66 @@
+{
+  "feature_id": "PC-102",
+  "story": "Title: Show each visit's status on the owner detail page\n\nStory: As a clinic receptionist, I want to see the status of every visit on the owner's page, so that I can tell at a glance which visits are scheduled, done or cancelled.\n\n**Requires a new or changed contract from:** petclinic-rest-api\n\nExpected behaviour:\n- The backend now returns a `status` on every visit (story PC-101). Its allowed values are defined by the `VisitStatus` enum in the attached `openapi.yml`: `SCHEDULED`, `COMPLETED`, `CANCELLED`. Use only these values; do not add others.\n- The owner detail page (`/owners/{id}`) lists each pet with its visits (`app-pet-list` \u2192 `app-visit-list`). Add a **Status** column to that visit table, between **Description** and **Actions**.\n- Show a readable label, not the raw value: `SCHEDULED` \u2192 \"Scheduled\", `COMPLETED` \u2192 \"Completed\", `CANCELLED` \u2192 \"Cancelled\".\n- When a visit has no `status` (an older backend, or the field is missing or null), show \"Not set\". When it has a value outside the three above, show the raw value as it came. The page must never fail to render because of the status.\n- The visits come nested in the owner response (`GET /api/owners/{ownerId}` \u2192 `pets[].visits[]`); no new API call is needed.\n\nAcceptance criteria:\n- AC1: The `Visit` model has an optional `status` typed with exactly the three values from the attached contract (`'SCHEDULED' | 'COMPLETED' | 'CANCELLED'`), defined once and reused, not repeated as string literals across components.\n- AC2: On the owner detail page, every visit row shows a Status column, placed between Description and Actions, with the header \"Status\".\n- AC3: A visit with `status: \"SCHEDULED\"` shows \"Scheduled\"; `\"COMPLETED\"` shows \"Completed\"; `\"CANCELLED\"` shows \"Cancelled\".\n- AC4: A visit with no `status` (field missing or null) shows \"Not set\"; a visit with an unexpected value (e.g. `\"DONE\"`) shows that value unchanged. Neither causes an error in the browser console.\n- AC5: Visit dates, descriptions and the Edit Visit / Delete Visit buttons behave exactly as before.\n- AC6: `npm install \u2026 && npx ng build --configuration development` passes.\n\nIn scope:\n- `src/app/visits/visit.ts` (status type and field).\n- `src/app/visits/visit-list/visit-list.component.ts` and `.html` (Status column and label mapping). A small shared helper or pipe under `src/app/visits/` is fine if it keeps the mapping in one place.\n\nOut of scope: setting or editing the status (the add-visit and edit-visit forms stay as they are), the visits list on any other page, styling beyond a plain table cell, NgRx (this app has no store), backend changes, unit tests (this repo runs build-only).\n\nAttachments:\n- `stories/PC-102/openapi.yml` \u2014 petclinic-rest-api's OpenAPI file after PC-101, copied as it is (from its `harness-metrics` branch, `contracts/PC-101/files/src/main/resources/openapi.yml`). Defines `VisitStatus` and the `status` property on `VisitFields` / `Visit`.",
+  "current_phase": "repo_instructions",
+  "status": "halted",
+  "story_path": "stories/PC-102/PC-102.md",
+  "story_sha256": "49660433121898e9c1c3297cc1ef25c5e5362b580973c6a7fb658d92b609d09f",
+  "attachments": [],
+  "input_guard": {
+    "ok": false,
+    "confirm_no_phi": true,
+    "pii_scan": true,
+    "findings": 15,
+    "finding_types": [
+      "dob"
+    ],
+    "attachments": 2,
+    "phase": "repo_instructions",
+    "actor": "mgganeshguptha-source"
+  },
+  "dependencies": {
+    "line": "repos",
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "contracts": [
+      {
+        "file": "stories/PC-102/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "warnings": 0,
+    "ok": true
+  },
+  "contract_output": {},
+  "clarification_log": [],
+  "completed_phases": [],
+  "approvals": {},
+  "last_feedback": "\n  ================ INPUT GUARD: HALTED ================\n  The story or its attachments did not pass the input guard. Nothing\n  was sent to a model.\n  Possible PII/PHI found (15); values are masked:\n    - stories/PC-102/openapi.yml (mocked samples), line 39: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 93: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 188: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 261: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 326: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 383: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 392: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 451: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 510: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 823: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 862: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 915: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 974: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 994: DOB **/**/****\n    - stories/PC-102/openapi.yml (mocked samples), line 1054: DOB **/**/****\n  Action : remove real member data from the story / attachments on the\n           story branch (or replace it with mocked data). If a match is\n           known-safe (a team mailbox, a support number), add the exact\n           value to attachment_pii_allow in .harness/config.yaml. If ALL\n           input is mocked test data, set attachment_pii_scan: false.\n           A resume reads config.yaml from harness-wip/<feature_id> \u2014\n           change it there too.\n  Resume : feature_id=PC-102, resume=true, start_phase=repo_instructions\n  ======================================================\n",
+  "iterations": {
+    "__runs__:repo_instructions": 1
+  },
+  "validation_attempts": 0,
+  "coverage_attempts": 0,
+  "changed_main_files": [],
+  "halt_gate": "input_guard",
+  "halt_detail": "input guard: stories/PC-102/openapi.yml (mocked samples), line 39: DOB **/**/****",
+  "phase_durations": {},
+  "started_at": "2026-11-02T07:29:54Z",
+  "actor": "mgganeshguptha-source",
+  "credits_actual": null,
+  "denied_writes": [],
+  "last_validation_loopback": "",
+  "contract_snapshot": {},
+  "ac_attempts": 0,
+  "review_attempts": 0,
+  "scope_attempts": 0,
+  "total_tokens": {},
+  "phase_token_log": [],
+  "phase_model_log": [],
+  "phase_credit_log": [],
+  "total_premium_cost": null,
+  "total_nano_aiu": null,
+  "model_usage": {},
+  "cost_source": null
+}

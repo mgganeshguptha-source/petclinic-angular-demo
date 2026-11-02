@@ -1,0 +1,621 @@
+{
+  "feature_id": "PC-102",
+  "story": "Title: Show each visit's status on the owner detail page\n\nStory: As a clinic receptionist, I want to see the status of every visit on the owner's page, so that I can tell at a glance which visits are scheduled, done or cancelled.\n\n**Requires a new or changed contract from:** petclinic-rest-api\n\nExpected behaviour:\n- The backend now returns a `status` on every visit (story PC-101). Its allowed values are defined by the `VisitStatus` enum in the attached `openapi.yml`: `SCHEDULED`, `COMPLETED`, `CANCELLED`. Use only these values; do not add others.\n- The owner detail page (`/owners/{id}`) lists each pet with its visits (`app-pet-list` \u2192 `app-visit-list`). Add a **Status** column to that visit table, between **Description** and **Actions**.\n- Show a readable label, not the raw value: `SCHEDULED` \u2192 \"Scheduled\", `COMPLETED` \u2192 \"Completed\", `CANCELLED` \u2192 \"Cancelled\".\n- When a visit has no `status` (an older backend, or the field is missing or null), show \"Not set\". When it has a value outside the three above, show the raw value as it came. The page must never fail to render because of the status.\n- The visits come nested in the owner response (`GET /api/owners/{ownerId}` \u2192 `pets[].visits[]`); no new API call is needed.\n\nAcceptance criteria:\n- AC1: The `Visit` model has an optional `status` typed with exactly the three values from the attached contract (`'SCHEDULED' | 'COMPLETED' | 'CANCELLED'`), defined once and reused, not repeated as string literals across components.\n- AC2: On the owner detail page, every visit row shows a Status column, placed between Description and Actions, with the header \"Status\".\n- AC3: A visit with `status: \"SCHEDULED\"` shows \"Scheduled\"; `\"COMPLETED\"` shows \"Completed\"; `\"CANCELLED\"` shows \"Cancelled\".\n- AC4: A visit with no `status` (field missing or null) shows \"Not set\"; a visit with an unexpected value (e.g. `\"DONE\"`) shows that value unchanged. Neither causes an error in the browser console.\n- AC5: Visit dates, descriptions and the Edit Visit / Delete Visit buttons behave exactly as before.\n- AC6: `npm install \u2026 && npx ng build --configuration development` passes.\n- AC7 (CL-1): A `status` that is an empty string or only spaces is treated as missing and shows \"Not set\".\n\nIn scope:\n- `src/app/visits/visit.ts` (status type and field).\n- `src/app/visits/visit-list/visit-list.component.ts` and `.html` (Status column and label mapping). A small shared helper or pipe under `src/app/visits/` is fine if it keeps the mapping in one place.\n\nOut of scope: setting or editing the status (the add-visit and edit-visit forms stay as they are), the visits list on any other page, styling beyond a plain table cell, NgRx (this app has no store), backend changes, unit tests (this repo runs build-only).\n\nAttachments:\n- `stories/PC-102/openapi.yml` \u2014 petclinic-rest-api's OpenAPI file after PC-101, copied as it is (from its `harness-metrics` branch, `contracts/PC-101/files/src/main/resources/openapi.yml`). Defines `VisitStatus` and the `status` property on `VisitFields` / `Visit`.",
+  "current_phase": "raise_pr",
+  "status": "done",
+  "story_path": "stories/PC-102/PC-102.md",
+  "story_sha256": "1e491e80c8ff3a4a680732808a0e48403e006fd40a94cb9252bfa1179ef618a6",
+  "attachments": [
+    {
+      "name": "openapi.yml",
+      "kind": "text",
+      "bytes": 67166,
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-102/openapi.yml",
+      "converted_from": null
+    },
+    {
+      "name": "openapi.yml.mock-samples.json",
+      "kind": "text",
+      "bytes": 44205,
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-102/openapi.yml",
+      "converted_from": "openapi"
+    }
+  ],
+  "input_guard": {
+    "ok": true,
+    "confirm_no_phi": true,
+    "pii_scan": true,
+    "findings": 0,
+    "finding_types": [],
+    "attachments": 2,
+    "phase": "raise_pr",
+    "actor": "mgganeshguptha-source"
+  },
+  "dependencies": {
+    "line": "repos",
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "contracts": [
+      {
+        "file": "stories/PC-102/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "warnings": 0,
+    "ok": true
+  },
+  "contract_output": {
+    "status": "none",
+    "files": [],
+    "skipped": [],
+    "summary": null,
+    "changed_contract_files": []
+  },
+  "clarification_log": [],
+  "completed_phases": [
+    "repo_instructions",
+    "context",
+    "design",
+    "prompt_steps",
+    "coding",
+    "code_review",
+    "unit_testing",
+    "validation",
+    "documentation",
+    "raise_pr"
+  ],
+  "approvals": {
+    "context": "approved",
+    "prompt_steps": "approved",
+    "coding": "approved",
+    "documentation": "approved"
+  },
+  "last_feedback": null,
+  "iterations": {
+    "__runs__:repo_instructions": 0,
+    "repo_instructions": 1,
+    "__runs__:context": 0,
+    "context": 1,
+    "__runs__:design": 0,
+    "__runs__:prompt_steps": 0,
+    "prompt_steps": 1,
+    "__runs__:coding": 0,
+    "coding": 1,
+    "__runs__:code_review": 0,
+    "code_review": 1,
+    "__runs__:unit_testing": 1,
+    "__runs__:validation": 1,
+    "validation": 1,
+    "__runs__:documentation": 1,
+    "documentation": 1,
+    "__runs__:raise_pr": 1,
+    "raise_pr": 1
+  },
+  "validation_attempts": 0,
+  "coverage_attempts": 0,
+  "changed_main_files": [
+    "src/app/visits/visit-status.ts",
+    "src/app/visits/visit.ts",
+    "src/app/visits/visit-status-label.pipe.ts",
+    "src/app/visits/visit-list/visit-list.component.html",
+    "src/app/visits/visit-list/visit-list.component.ts"
+  ],
+  "halt_gate": "config_error",
+  "halt_detail": "environment (toolchain): ENVIRONMENT FAILURE (exit 127) \u2014 build tool could not start",
+  "phase_durations": {
+    "repo_instructions": 31.0,
+    "context": 61.4,
+    "prompt_steps": 59.5,
+    "coding": 16.9,
+    "code_review": 14.4,
+    "unit_testing": 0.0,
+    "validation": 37.4,
+    "documentation": 19.3,
+    "raise_pr": 9.2
+  },
+  "started_at": "2026-11-02T07:44:41Z",
+  "actor": "mgganeshguptha-source",
+  "credits_actual": null,
+  "denied_writes": [],
+  "last_validation_loopback": "",
+  "contract_snapshot": {},
+  "ac_attempts": 0,
+  "review_attempts": 0,
+  "scope_attempts": 0,
+  "total_tokens": {
+    "input": 2249099,
+    "output": 48077,
+    "cache_read": 1775637,
+    "cache_write": 473374,
+    "reasoning": 19541
+  },
+  "phase_token_log": [
+    {
+      "phase": "repo_instructions",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 229996,
+      "cumulative_tokens": 229996,
+      "input_tokens": 224144,
+      "output_tokens": 5852,
+      "cached_tokens": 182561,
+      "cache_write_tokens": 41571,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "glob",
+        "view",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 994918500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 5,
+          "premium_cost": 1.0,
+          "nano_aiu": 994918500.0,
+          "input": 224144,
+          "output": 5852,
+          "cache_read": 182561,
+          "reasoning": 1104
+        }
+      }
+    },
+    {
+      "phase": "context",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 441009,
+      "cumulative_tokens": 671005,
+      "input_tokens": 428674,
+      "output_tokens": 12335,
+      "cached_tokens": 344224,
+      "cache_write_tokens": 84438,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "grep",
+        "glob",
+        "bash",
+        "view",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 2016569000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 5,
+          "premium_cost": 1.0,
+          "nano_aiu": 2016569000.0,
+          "input": 428674,
+          "output": 12335,
+          "cache_read": 344224,
+          "reasoning": 7858
+        }
+      }
+    },
+    {
+      "phase": "prompt_steps",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 445978,
+      "cumulative_tokens": 1116983,
+      "input_tokens": 432622,
+      "output_tokens": 13356,
+      "cached_tokens": 357784,
+      "cache_write_tokens": 74824,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "glob",
+        "grep",
+        "view",
+        "bash",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1961024000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 6,
+          "premium_cost": 1.0,
+          "nano_aiu": 1961024000.0,
+          "input": 432622,
+          "output": 13356,
+          "cache_read": 357784,
+          "reasoning": 4684
+        }
+      }
+    },
+    {
+      "phase": "coding",
+      "run_id": "41408227782",
+      "model": "claude-sonnet-5.5",
+      "phase_tokens": 251675,
+      "cumulative_tokens": 1368658,
+      "input_tokens": 249134,
+      "output_tokens": 2541,
+      "cached_tokens": 184032,
+      "cache_write_tokens": 65092,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "view",
+        "create",
+        "edit"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 20656320000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-sonnet-5.5"
+      ],
+      "model_breakdown": {
+        "claude-sonnet-5.5": {
+          "requests": 4,
+          "premium_cost": 1.0,
+          "nano_aiu": 20656320000.0,
+          "input": 249134,
+          "output": 2541,
+          "cache_read": 184032,
+          "reasoning": 0
+        }
+      }
+    },
+    {
+      "phase": "code_review",
+      "run_id": "41408227782",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 154218,
+      "cumulative_tokens": 1522876,
+      "input_tokens": 151689,
+      "output_tokens": 2529,
+      "cached_tokens": 86272,
+      "cache_write_tokens": 65411,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1030419500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 1030419500.0,
+          "input": 151689,
+          "output": 2529,
+          "cache_read": 86272,
+          "reasoning": 1683
+        }
+      }
+    },
+    {
+      "phase": "validation",
+      "run_id": "41412898369",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 448060,
+      "cumulative_tokens": 1970936,
+      "input_tokens": 441376,
+      "output_tokens": 6684,
+      "cached_tokens": 369501,
+      "cache_write_tokens": 71859,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "bash",
+        "glob",
+        "view",
+        "grep",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 1602098500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 7,
+          "premium_cost": 1.0,
+          "nano_aiu": 1602098500.0,
+          "input": 441376,
+          "output": 6684,
+          "cache_read": 369501,
+          "reasoning": 2683
+        }
+      }
+    },
+    {
+      "phase": "documentation",
+      "run_id": "41412898369",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 242200,
+      "cumulative_tokens": 2213136,
+      "input_tokens": 239046,
+      "output_tokens": 3154,
+      "cached_tokens": 199269,
+      "cache_write_tokens": 39765,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "glob",
+        "grep",
+        "bash",
+        "view",
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 854151500.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 5,
+          "premium_cost": 1.0,
+          "nano_aiu": 854151500.0,
+          "input": 239046,
+          "output": 3154,
+          "cache_read": 199269,
+          "reasoning": 1186
+        }
+      }
+    },
+    {
+      "phase": "raise_pr",
+      "run_id": "41412898369",
+      "model": "claude-haiku-5.5",
+      "phase_tokens": 84040,
+      "cumulative_tokens": 2297176,
+      "input_tokens": 82414,
+      "output_tokens": 1626,
+      "cached_tokens": 51994,
+      "cache_write_tokens": 30414,
+      "est_credits": null,
+      "est_usd": null,
+      "included": false,
+      "partial": false,
+      "skills_loaded": [],
+      "tools_invoked": [
+        "create"
+      ],
+      "premium_cost": 1.0,
+      "nano_aiu": 513529000.0,
+      "cost_source": "session_metrics",
+      "models_used": [
+        "claude-haiku-5.5"
+      ],
+      "model_breakdown": {
+        "claude-haiku-5.5": {
+          "requests": 2,
+          "premium_cost": 1.0,
+          "nano_aiu": 513529000.0,
+          "input": 82414,
+          "output": 1626,
+          "cache_read": 51994,
+          "reasoning": 343
+        }
+      }
+    }
+  ],
+  "phase_model_log": [
+    {
+      "phase": "repo_instructions",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "context",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "prompt_steps",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "coding",
+      "model": "claude-sonnet-5.5"
+    },
+    {
+      "phase": "code_review",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "validation",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "documentation",
+      "model": "claude-haiku-5.5"
+    },
+    {
+      "phase": "raise_pr",
+      "model": "claude-haiku-5.5"
+    }
+  ],
+  "phase_credit_log": [
+    {
+      "phase": "repo_instructions",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 994918500.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "context",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 2016569000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "prompt_steps",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 1961024000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "coding",
+      "model": "claude-sonnet-5.5",
+      "configured_model": "claude-sonnet-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 20656320000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "code_review",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 1030419500.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "unit_testing",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": null,
+      "nano_aiu": null,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "unit_testing",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": null,
+      "nano_aiu": null,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "validation",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 1602098500.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "documentation",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 854151500.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    },
+    {
+      "phase": "raise_pr",
+      "model": "claude-haiku-5.5",
+      "configured_model": "claude-haiku-5.5",
+      "credits": null,
+      "before": null,
+      "after": null,
+      "premium_cost": 1.0,
+      "nano_aiu": 513529000.0,
+      "credit_source": "sdk",
+      "is_estimate": false
+    }
+  ],
+  "total_premium_cost": 8.0,
+  "total_nano_aiu": 29629030000.0,
+  "model_usage": {
+    "claude-haiku-5.5": {
+      "requests": 32,
+      "input": 1999965,
+      "output": 45536,
+      "premium_cost": 7.0,
+      "nano_aiu": 8972710000.0
+    },
+    "claude-sonnet-5.5": {
+      "requests": 4,
+      "input": 249134,
+      "output": 2541,
+      "premium_cost": 1.0,
+      "nano_aiu": 20656320000.0
+    }
+  },
+  "cost_source": "session_metrics"
+}

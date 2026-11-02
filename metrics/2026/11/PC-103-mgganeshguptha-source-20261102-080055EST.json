@@ -1,0 +1,108 @@
+{
+  "ac_assumed": 3,
+  "ac_met": null,
+  "ac_not_met": null,
+  "ac_total": 28,
+  "ac_unverifiable": null,
+  "ac_verdict": null,
+  "actor": "mgganeshguptha-source",
+  "attachments": [
+    {
+      "bytes": 67166,
+      "converted_from": null,
+      "kind": "text",
+      "name": "openapi.yml",
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-103/openapi.yml"
+    },
+    {
+      "bytes": 44205,
+      "converted_from": "openapi",
+      "kind": "text",
+      "name": "openapi.yml.mock-samples.json",
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-103/openapi.yml"
+    }
+  ],
+  "blockers": 0,
+  "clarification_items": [
+    "[NEEDS CLARIFICATION]: CL-1 \u2014 Failure observability: the visit service's get-all call catches HTTP errors and returns an empty list, so the store cannot see a failure through it, and AC-8, AC-9 and AC-25 cannot be met as written. Options: (a) keep the service unchanged; a failed request ends with lo",
+    "[NEEDS CLARIFICATION]: CL-2 \u2014 Visits held after a failed load: (a) keep the previously loaded visits (b) clear visits to an empty list"
+  ],
+  "clarifications": 2,
+  "confirm_no_phi": true,
+  "contract_output": null,
+  "cost_reported_by": "session_metrics",
+  "coverage_pct": null,
+  "credit_source": "sdk",
+  "credits_actual": null,
+  "decisions_available": 0,
+  "dependencies": {
+    "contracts": [
+      {
+        "file": "stories/PC-103/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "line": "repos",
+    "ok": true,
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "warnings": 0
+  },
+  "design_required": "YES",
+  "dur_context": 82.8,
+  "duration_sec": 83.7,
+  "engine_ref": "v1",
+  "feasibility": "GO",
+  "feature_id": "PC-103",
+  "finished_at": "2026-11-02T13:02:36Z",
+  "halt_detail": null,
+  "halt_gate": "clarification",
+  "halt_phase": "context",
+  "input_guard": {
+    "actor": "mgganeshguptha-source",
+    "attachments": 2,
+    "confirm_no_phi": true,
+    "finding_types": [],
+    "findings": 0,
+    "ok": true,
+    "phase": "context",
+    "pii_scan": true
+  },
+  "loopback_ac": 0,
+  "loopback_coverage": 0,
+  "loopback_review": 0,
+  "loopback_scope": 0,
+  "loopback_validation": 0,
+  "model_context": "claude-haiku-5.5",
+  "models_used": "claude-haiku-5.5",
+  "nano_aiu_context": 2769315500.0,
+  "nano_aiu_total": 2769315500.0,
+  "phase_seq": "repo_instructions,context",
+  "phases_run": 2,
+  "premium_cost_context": 1.0,
+  "premium_cost_total": 1.0,
+  "quality_score": 88,
+  "repo": "mgganeshguptha-source/petclinic-angular-demo",
+  "resumed": false,
+  "run_id": "41449334070",
+  "schema_version": 6,
+  "started_at": "2026-11-02T13:01:13Z",
+  "status": "needs_input",
+  "story_path": "stories/PC-103/PC-103.md",
+  "story_sha256": "90496d34d36e7d594c263af68a43dd70a06dcf17fb6bfe8c8c278247bf01326c",
+  "tokens_cache_read": 504198,
+  "tokens_context": 635131,
+  "tokens_input": 618371,
+  "tokens_output": 16760,
+  "tokens_total": 635131,
+  "tokens_total_all_runs": 635131,
+  "toolkit_ref": "main",
+  "usage_claude-haiku-5.5_input": 618371,
+  "usage_claude-haiku-5.5_nano_aiu": 2769315500.0,
+  "usage_claude-haiku-5.5_output": 16760,
+  "usage_claude-haiku-5.5_premium_cost": 1.0,
+  "usage_claude-haiku-5.5_requests": 8
+}

@@ -1,0 +1,6 @@
+VERDICT: PASS
+[NOTE]: visits-bridge.ts combines four separate store selects. One store update can emit intermediate combinations (new visits with old loading/error) before the final one, so the bridge may publish and dispatch a transient snapshot. The final published state is correct. Selecting `selectVisitsState` once and deriving the snapshot from it would avoid the intermediate publish.
+[NOTE]: visits-bridge.ts uses `(window as any)`. Prefer a typed `declare global { interface Window { petclinicHost?: ... } }` as the plan describes.
+[NOTE]: The plan asks for `// TODO HIPAA: emit audit event` markers on the effect and on the bridge publish. The effect and bridge files do not have them. The bridge comment about visit dates and petIds being visible to page scripts is also missing.
+[NOTE]: visits.effects.ts and visits.reducer.ts are in place and match the story. Status counts derive from VISIT_STATUS_LABELS, and the failure path uses the fixed message only.
+[NOTE]: The loadVisits dispatch in AppComponent runs in the constructor. This works only if VisitsModule's feature registration is eager at bootstrap (per the plan's pre-flight). That was not verified here, since file reads were disabled for this phase.

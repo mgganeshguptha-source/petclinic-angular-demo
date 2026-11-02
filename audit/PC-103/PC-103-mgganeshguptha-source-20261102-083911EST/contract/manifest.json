@@ -1,0 +1,24 @@
+{
+  "repo": "petclinic-angular-demo",
+  "feature_id": "PC-103",
+  "run_id": "41454814514",
+  "commit": "2430a32e9796373a76eb68c046e5e56f3797935e",
+  "base": "story/PC-103",
+  "generated_at": "2026-11-02T13:42:16Z",
+  "files": [
+    "src/app/store/visits/visits-bridge.ts",
+    "src/app/store/visits/visits.actions.ts",
+    "src/app/store/visits/visits.effects.ts",
+    "src/app/store/visits/visits.reducer.ts",
+    "src/app/store/visits/visits.selectors.ts",
+    "stories/PC-102/openapi.yml",
+    "stories/PC-103/openapi.yml"
+  ],
+  "changed_contract_files": [
+    "src/app/store/visits/visits-bridge.ts",
+    "src/app/store/visits/visits.actions.ts",
+    "src/app/store/visits/visits.effects.ts",
+    "src/app/store/visits/visits.reducer.ts",
+    "src/app/store/visits/visits.selectors.ts"
+  ]
+}

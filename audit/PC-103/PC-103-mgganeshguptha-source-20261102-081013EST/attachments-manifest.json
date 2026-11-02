@@ -1,0 +1,33 @@
+{
+  "feature_id": "PC-103",
+  "folder": "stories/PC-103",
+  "ok": true,
+  "guard": {
+    "ok": true,
+    "confirm_no_phi": true,
+    "pii_scan": true,
+    "findings": 0,
+    "finding_types": [],
+    "attachments": 2
+  },
+  "items": [
+    {
+      "name": "openapi.yml",
+      "kind": "text",
+      "mime": "text/plain",
+      "bytes": 67166,
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-103/openapi.yml",
+      "converted_from": null
+    },
+    {
+      "name": "openapi.yml.mock-samples.json",
+      "kind": "text",
+      "mime": "application/json",
+      "bytes": 44205,
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-103/openapi.yml",
+      "converted_from": "openapi"
+    }
+  ]
+}

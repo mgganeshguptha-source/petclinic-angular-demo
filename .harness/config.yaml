@@ -73,7 +73,11 @@ target_module: ""
 # primeng@17 in an Angular 19 app) fails a plain npm install with ERESOLVE.
 # Remove it once the repo's peer dependencies match, or a lock file / .npmrc is
 # committed.
-test_command: "npm install --registry=https://registry.npmjs.org/ --no-package-lock --no-audit --no-fund --legacy-peer-deps && npx ng build --configuration development"
+# petclinic-angular-demo: angular.json defines only a 'production' build
+# configuration (no 'development'), so build with the default options.
+# `--configuration development` failed: "Configuration 'development' for
+# target 'build' ... is not set in the workspace" (PC-102, 2026-11-02).
+test_command: "npm install --registry=https://registry.npmjs.org/ --no-package-lock --no-audit --no-fund --legacy-peer-deps && npx ng build"
 
 # Narrow the test run to a subset. Blank => run the whole suite.
 # Maven example: "-Dtest=OwnerServiceTest". Not used for this frontend repo.

@@ -1,0 +1,111 @@
+{
+  "ac_assumed": 1,
+  "ac_met": null,
+  "ac_not_met": null,
+  "ac_total": 22,
+  "ac_unverifiable": null,
+  "ac_verdict": null,
+  "actor": "mgganeshguptha-source",
+  "attachments": [
+    {
+      "bytes": 67166,
+      "converted_from": null,
+      "kind": "text",
+      "name": "openapi.yml",
+      "sha256": "53b37372005ebd2443d3c5620959833df6a903ab8e007038ab5f02010082a100",
+      "source": "stories/PC-103/openapi.yml"
+    },
+    {
+      "bytes": 44205,
+      "converted_from": "openapi",
+      "kind": "text",
+      "name": "openapi.yml.mock-samples.json",
+      "sha256": "1214d70a0c45255754c7a9eb3998b020ca5cc38d5908af6036208e22458eda2f",
+      "source": "stories/PC-103/openapi.yml"
+    }
+  ],
+  "blockers": 0,
+  "clarification_items": [
+    "[NEEDS CLARIFICATION]: CL-1 \u2014 Host state published before the first load completes: (a) loading false, visits empty, error null (b) loading true, visits empty, error null",
+    "[NEEDS CLARIFICATION]: CL-2 \u2014 Visits held after a failed load: (a) keep the visits from the last successful load (b) reset visits to empty",
+    "[NEEDS CLARIFICATION]: CL-3 \u2014 Error value when a new load starts: (a) reset error to null when the load begins (b) keep the previous error until the load succeeds or fails again",
+    "[NEEDS CLARIFICATION]: CL-4 \u2014 Load-visits dispatched while a load is in flight: (a) cancel the in-flight request and keep only the latest result (b) start a request per dispatch, last response to arrive wins (c) ignore the new dispatch until the load ends",
+    "[NEEDS CLARIFICATION]: CL-5 \u2014 Visit fields published on the host bridge: (a) full visit objects as returned by the API, including nested pet data (b) only id, date, status, and petId"
+  ],
+  "clarifications": 5,
+  "confirm_no_phi": true,
+  "contract_output": null,
+  "cost_reported_by": "session_metrics",
+  "coverage_pct": null,
+  "credit_source": "sdk",
+  "credits_actual": null,
+  "decisions_available": 0,
+  "dependencies": {
+    "contracts": [
+      {
+        "file": "stories/PC-103/openapi.yml",
+        "repo": "petclinic-rest-api"
+      }
+    ],
+    "line": "repos",
+    "ok": true,
+    "repos": [
+      "petclinic-rest-api"
+    ],
+    "warnings": 0
+  },
+  "design_required": "YES",
+  "dur_context": 93.6,
+  "duration_sec": 94.4,
+  "engine_ref": "v1",
+  "feasibility": "GO",
+  "feature_id": "PC-103",
+  "finished_at": "2026-11-02T12:16:05Z",
+  "halt_detail": null,
+  "halt_gate": "clarification",
+  "halt_phase": "context",
+  "input_guard": {
+    "actor": "mgganeshguptha-source",
+    "attachments": 2,
+    "confirm_no_phi": true,
+    "finding_types": [],
+    "findings": 0,
+    "ok": true,
+    "phase": "context",
+    "pii_scan": true
+  },
+  "loopback_ac": 0,
+  "loopback_coverage": 0,
+  "loopback_review": 0,
+  "loopback_scope": 0,
+  "loopback_validation": 0,
+  "model_context": "claude-haiku-5.5",
+  "models_used": "claude-haiku-5.5",
+  "nano_aiu_context": 2773543500.0,
+  "nano_aiu_total": 2773543500.0,
+  "phase_seq": "repo_instructions,context",
+  "phases_run": 2,
+  "premium_cost_context": 1.0,
+  "premium_cost_total": 1.0,
+  "quality_score": 88,
+  "repo": "mgganeshguptha-source/petclinic-angular-demo",
+  "resumed": false,
+  "run_id": "41443011401",
+  "schema_version": 6,
+  "started_at": "2026-11-02T12:14:31Z",
+  "status": "needs_input",
+  "story_path": "stories/PC-103/PC-103.md",
+  "story_sha256": "ee27dc68b827144d2fd3b3e25f9ca1cd9f4b5bd5c56661b5d391f9dbd8629b91",
+  "tokens_cache_read": 414821,
+  "tokens_context": 545661,
+  "tokens_input": 526374,
+  "tokens_output": 19287,
+  "tokens_total": 545661,
+  "tokens_total_all_runs": 545661,
+  "toolkit_ref": "main",
+  "usage_claude-haiku-5.5_input": 526374,
+  "usage_claude-haiku-5.5_nano_aiu": 2773543500.0,
+  "usage_claude-haiku-5.5_output": 19287,
+  "usage_claude-haiku-5.5_premium_cost": 1.0,
+  "usage_claude-haiku-5.5_requests": 7
+}
